@@ -1,5 +1,6 @@
 package com.paradox543.malankaraorthodoxliturgica.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -464,6 +465,7 @@ fun DisplayEvent(
                     verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
                     bibleReadings.vespersGospel?.let  { vespersGospel ->
+                        Log.e("sgfhsgdf", vespersGospel.toString())
                         val text =
                             bibleViewModel.formatGospelEntry(
                                 vespersGospel,

@@ -41,3 +41,5 @@ val OnSecondaryContainerDark = Color(0xFFFFEFC2) // Light ivory text
 // Backgrounds
 val BackgroundDark = Color(0xFF121212)       // Standard dark background
 val OnBackgroundDark = Color(0xFFEAEAEA)     // Light text for contrast
+
+val CardBorderColor = Color(0xFFDFDFDF)

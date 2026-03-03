@@ -79,6 +79,7 @@ class CalendarViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 Log.d("CalendarViewModel", "Loading month data for $month/$year")
+                Log.e("fdjgdg", calendarRepository.loadMonthData(month, year).toString())
                 _monthCalendarData.value = calendarRepository.loadMonthData(month, year)
                 _currentCalendarViewDate.value = LocalDate.of(year, month, 1) // Update viewed month
                 val previousMonth = _currentCalendarViewDate.value.minusMonths(1)

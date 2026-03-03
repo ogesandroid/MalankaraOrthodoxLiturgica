@@ -216,7 +216,10 @@ fun PrayerScreen(
                 while (listState.firstVisibleItemIndex != scrollIndex && retryCount < 10) {
                     Log.d("QR in Prayer AppScreen", "Detected scroll from Qr: $scrollIndex")
                     listState.scrollToItem(scrollIndex)
-                    Log.d("QR in Prayer AppScreen", "Scrolled to item: ${listState.firstVisibleItemIndex}")
+                    Log.d(
+                        "QR in Prayer AppScreen",
+                        "Scrolled to item: ${listState.firstVisibleItemIndex}"
+                    )
                     retryCount++
                     delay(100) // Small delay to allow UI to update
                 }
@@ -515,7 +518,7 @@ fun DynamicSongUI(
                 is PrayerElement.CollapsibleBlock,
                 is PrayerElement.AlternativePrayersBlock,
                 is PrayerElement.AlternativeOption,
-                -> {
+                    -> {
                     PrayerElementRenderer(
                         item,
                         prayerViewModel,
@@ -603,3 +606,9 @@ fun rememberScrollAwareVisibility(): Pair<MutableState<Boolean>, NestedScrollCon
         }
     return isVisible to nestedScrollConnection
 }
+
+
+
+
+
+

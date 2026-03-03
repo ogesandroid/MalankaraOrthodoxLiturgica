@@ -9,15 +9,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.paradox543.malankaraorthodoxliturgica.R
 
-val iconSize = 24.dp
+val iconSize = 25.dp
 val bottomNavItems =
     listOf(
         BottomNavItem("home", "Home") {
-            Icon(Icons.Default.Home, "Home")
+            Icon(painterResource(R.drawable.icon_home), "Home")
         },
         BottomNavItem("prayNow", "Pray Now") {
             Icon(
-                painterResource(R.drawable.clock),
+                painterResource(R.drawable.icon_pray),
                 "Clock",
                 modifier = Modifier.size(iconSize),
             )
@@ -39,10 +39,10 @@ val bottomNavItems =
                 Modifier.size(iconSize),
             )
         },
-        BottomNavItem("bible", "Bible") {
+        BottomNavItem("settings", "Settings") {
             Icon(
-                painterResource(R.drawable.bible),
-                "Bible",
+                painterResource(R.drawable.icon_settings),
+                "Settings",
                 modifier = Modifier.size(iconSize),
             )
         },
