@@ -5,6 +5,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavController
 import com.paradox543.malankaraorthodoxliturgica.services.InAppReviewManager
+import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.BibleViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.PrayerNavViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.PrayerViewModel
 
@@ -12,9 +13,10 @@ import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.PrayerViewModel
 fun HomeScreen(
     navController: NavController,
     prayerViewModel: PrayerViewModel,
+    bibleViewModel: BibleViewModel,
     prayerNavViewModel: PrayerNavViewModel,
     inAppReviewManager: InAppReviewManager,
 ) {
     val rootNode by prayerNavViewModel.rootNode.collectAsState()
-    SectionScreen(navController, prayerViewModel, rootNode, inAppReviewManager)
+    SectionScreen(navController, prayerViewModel,bibleViewModel, rootNode, inAppReviewManager)
 }

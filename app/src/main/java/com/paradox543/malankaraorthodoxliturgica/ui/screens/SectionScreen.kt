@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -24,9 +23,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -39,34 +41,39 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.paradox543.malankaraorthodoxliturgica.R
+import com.paradox543.malankaraorthodoxliturgica.domain.bible.model.BibleReference
+import com.paradox543.malankaraorthodoxliturgica.domain.bible.model.ReferenceRange
 import com.paradox543.malankaraorthodoxliturgica.domain.prayer.model.PageNode
 import com.paradox543.malankaraorthodoxliturgica.services.InAppReviewManager
 import com.paradox543.malankaraorthodoxliturgica.ui.components.BottomNavBar
 import com.paradox543.malankaraorthodoxliturgica.ui.components.HomeTopNav
 import com.paradox543.malankaraorthodoxliturgica.ui.navigation.AppScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.theme.CardBorderColor
+import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.BibleViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.PrayerViewModel
 
-data class MenuItem(
-    val title: String, val iconRes: Int
-)
 
 @SuppressLint("ContextCastToActivity")
 @Composable
 fun SectionScreen(
     navController: NavController,
     prayerViewModel: PrayerViewModel,
+    bibleViewModel: BibleViewModel,
     node: PageNode,
     inAppReviewManager: InAppReviewManager,
     modifier: Modifier = Modifier,
 ) {
     val translations by prayerViewModel.translations.collectAsState()
+    val menus by prayerViewModel.menuList.collectAsState()
+    val banner by prayerViewModel.bannerImg.collectAsState()
+    val isLoading by prayerViewModel.isLoading.collectAsState()
     val nodes = node.children
+    Log.e("ahgsf",nodes.toString())
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
     var title = ""
@@ -94,80 +101,79 @@ fun SectionScreen(
                 .fillMaxWidth()
                 .padding(innerPadding)
         ) {
-            if (screenWidth > 600.dp) {
-                Row {
-                    DisplayIconography("row")
-                    LazyVerticalGrid(
-                        columns = GridCells.Adaptive(240.dp),
-                        modifier = Modifier.fillMaxSize(),
-                        horizontalArrangement = Arrangement.SpaceEvenly,
-                    ) {
-                        item {
-                            val menuData = listOf(
-                                MenuItem("Calendar", R.drawable.calendar),
-                                MenuItem("Bible", R.drawable.bible),
-                                MenuItem("Videos", R.drawable.link),
-                                MenuItem("Songs", R.drawable.icon_pray)
-                            )
-                            //val menus = listOf("Calendar", "Bible", "Videos", "Songs")
-                            LazyRow(
-                                contentPadding = PaddingValues(end = 16.dp),
-                                horizontalArrangement = Arrangement.spacedBy(34.dp),
-                                modifier = Modifier.padding(
-                                    bottom = 16.dp, top = 24.dp
-                                )
-                            ) {
-                                items(menuData) { menu ->
-                                    MenuListCard(menu.title, menu.iconRes)
-                                }
-                            }
-                        }
-                        items(nodes.size) { index ->
-                            SectionCard(
-                                nodes[index],
-                                navController,
-                                translations,
-                            )
-                        }
-                    }
+            if (isLoading) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
                 }
             } else {
-                Column {
-                    LazyVerticalGrid(
-                        columns = GridCells.Adaptive(240.dp),
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .weight(0.6f),
-                        horizontalArrangement = Arrangement.SpaceEvenly,
-                    ) {
-                        item {
-                            DisplayIconography("column")
-                        }
-                        item {
-                            val menuData = listOf(
-                                MenuItem("Calendar", R.drawable.calendar),
-                                MenuItem("Bible", R.drawable.bible),
-                                MenuItem("Videos", R.drawable.link),
-                                MenuItem("Songs", R.drawable.icon_pray)
-                            )
-                            LazyRow(
-                                contentPadding = PaddingValues(end = 16.dp),
-                                horizontalArrangement = Arrangement.spacedBy(34.dp),
-                                modifier = Modifier.padding(
-                                    bottom = 16.dp, top = 24.dp, start = 21.dp, end = 21.dp
-                                )
-                            ) {
-                                items(menuData) { menu ->
-                                    MenuListCard(menu.title, menu.iconRes)
+                if (screenWidth > 600.dp) {
+                    Row {
+                        DisplayIconography(bibleViewModel,navController,"row", banner)
+                        LazyVerticalGrid(
+                            columns = GridCells.Adaptive(240.dp),
+                            modifier = Modifier.fillMaxSize(),
+                            horizontalArrangement = Arrangement.SpaceEvenly,
+                        ) {
+                            item {
+                                LazyRow(
+                                    contentPadding = PaddingValues(end = 16.dp),
+                                    horizontalArrangement = Arrangement.spacedBy(34.dp),
+                                    modifier = Modifier.padding(
+                                        bottom = 16.dp, top = 24.dp
+                                    )
+                                ) {
+                                    items(menus) { menu ->
+
+                                        //TODO: Need to pass the route from the api response.
+                                        MenuListCard(navController,menu.name, menu.icon, AppScreen.Calendar.route)
+                                    }
                                 }
                             }
+                            items(nodes.size) { index ->
+                                SectionCard(
+                                    nodes[index],
+                                    navController,
+                                    translations,
+                                )
+                            }
                         }
-                        items(nodes.size) { index ->
-                            SectionCard(
-                                nodes[index],
-                                navController,
-                                translations,
-                            )
+                    }
+                } else {
+                    Column {
+                        LazyVerticalGrid(
+                            columns = GridCells.Adaptive(240.dp),
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .weight(0.6f),
+                            horizontalArrangement = Arrangement.SpaceEvenly,
+                        ) {
+                            item {
+                                DisplayIconography(bibleViewModel,navController,"column", banner)
+                            }
+                            item {
+                                LazyRow(
+                                    contentPadding = PaddingValues(end = 16.dp),
+                                    horizontalArrangement = Arrangement.spacedBy(34.dp),
+                                    modifier = Modifier.padding(
+                                        bottom = 16.dp, top = 24.dp, start = 21.dp, end = 21.dp
+                                    )
+                                ) {
+                                    items(menus) { menu ->
+                                        //TODO: Need to pass the route from the api response.
+                                        MenuListCard(navController,menu.name, menu.icon,AppScreen.Calendar.route)
+                                    }
+                                }
+                            }
+                            items(nodes.size) { index ->
+                                SectionCard(
+                                    nodes[index],
+                                    navController,
+                                    translations,
+                                )
+                            }
                         }
                     }
                 }
@@ -177,7 +183,7 @@ fun SectionScreen(
 }
 
 @Composable
-private fun DisplayIconography(orientation: String) {
+private fun DisplayIconography(bibleViewModel: BibleViewModel, navController: NavController, orientation: String, banner: List<String>) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -188,19 +194,29 @@ private fun DisplayIconography(orientation: String) {
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.greatlent),
-                contentDescription = "Local Image",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(164.dp),
-                contentScale = ContentScale.Crop
-            )
+            if (banner.isNotEmpty()) {
+                AsyncImage(
+                    model = banner[0],
+                    contentDescription = "Image",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(164.dp),
+                    contentScale = ContentScale.Crop
+                )
+            } else {
+                Image(
+                    painter = painterResource(id = R.drawable.greatlent),
+                    contentDescription = "Local Image",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(164.dp),
+                    contentScale = ContentScale.Crop
+                )
+            }
             Text(
                 text = "\"For I know the plans I have for you,\" declares the Lord, \"plans to prosper you and not to harm you, plans to give you hope and a future.\"",
-                color = Color.Gray,
-                fontWeight = FontWeight.Medium,
-                fontSize = 14.sp,
+                color = Color(0xFF555353),
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 10.dp, bottom = 0.dp)
             )
             Row(
@@ -212,34 +228,41 @@ private fun DisplayIconography(orientation: String) {
             ) {
                 Text(
                     text = "Jeremiah 29:11",
-                    color = Color.Black,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 12.sp
+                    color = Color(0xFFD1422B),
+                    style = MaterialTheme.typography.bodyMedium,
                 )
-                Text(
-                    text = "Read More ->",
-                    color = Color.Black,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 10.sp
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    TextButton(
+                        onClick = {
+                            //TODO: Need data from the api response.
+                            val entries = listOf(
+                                BibleReference(
+                                    bookNumber = 1,
+                                    ranges = listOf(ReferenceRange(startChapter = 5, startVerse = 1, endChapter = 5, endVerse = 12)),
+                                ),
+                            )
+                            bibleViewModel.setSelectedBibleReference(entries) // Pass the data to the bible model to get the readings.
+                            navController.navigate(AppScreen.BibleReader.route) // Redirection to bible reading page.
+                        }
+                    ) {
+                        Text(
+                            text = "Read More ",
+                            color = Color(0xFF0D6BD7),
+                            textDecoration = TextDecoration.Underline,
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                        Icon(
+                            painterResource(R.drawable.ic_right_arrow),
+                            tint = Color(0xFF0D6BD7),
+                            contentDescription = "Arrow",
+                        )
+                    }
+                }
             }
         }
-    }/*Image(
-        painter = painterResource(R.drawable.greatlent),
-        contentDescription = "icon",
-        modifier =
-            if (orientation == "row") {
-                Modifier
-                    .requiredWidthIn(min = 200.dp, max = 400.dp)
-                    .fillMaxHeight()
-            } else {
-                Modifier
-                    .requiredWidthIn(max = 400.dp)
-//                .fillMaxWidth()
-            },
-        alignment = Alignment.TopStart,
-        contentScale = ContentScale.Crop,
-    )*/
+    }
 }
 
 @Composable
@@ -277,15 +300,39 @@ private fun SectionCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             val text = node.route.split("_").last()
-            Image(
-                painter = painterResource(id = R.drawable.greatlent),
-                contentDescription = "Local Image",
-                modifier = Modifier
-                    .width(43.dp)
-                    .height(43.dp)
-                    .clip(RoundedCornerShape(5.dp)),
-                contentScale = ContentScale.Crop,
-            )
+            val icon: Int
+            when (node.route) {
+                "commonPrayers" -> {
+                    icon = R.drawable.ic_common_prayer_icon
+                }
+
+                "dailyPrayers" -> {
+                    icon = R.drawable.ic_dialy_prayer_icon
+                }
+
+                "sacraments" -> {
+                    icon = R.drawable.ic_sacramentral_prayer_icon
+                }
+
+                "ekkaraSongs" -> {
+                    icon = R.drawable.ic_ekara_prayer_icon
+                }
+
+                else -> {
+                    icon = 0
+                }
+            }
+            if (icon != 0) {
+                Image(
+                    painter = painterResource(id = icon),
+                    contentDescription = "Local Image",
+                    modifier = Modifier
+                        .width(43.dp)
+                        .height(43.dp)
+                        .clip(RoundedCornerShape(5.dp)),
+                    contentScale = ContentScale.Crop,
+                )
+            }
             Text(
                 text = if (text.contains("ragam")) {
                     translations["ragam"] + " " + text.substringAfter("ragam")
@@ -293,11 +340,10 @@ private fun SectionCard(
                     translations[text] ?: text
                 },
                 color = Color.White,
-                fontWeight = FontWeight.Medium,
-                fontSize = 12.sp,
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier
                     .weight(1f)
-                    .padding(start = 20.dp, end = 10.dp, top = 0.dp, bottom = 0.dp)
+                    .padding(start = 20.dp, end = 10.dp, top = 10.dp, bottom = 10.dp)
             )
             Image(
                 painter = painterResource(id = R.drawable.ic_white_arrow_icon),
@@ -312,14 +358,18 @@ private fun SectionCard(
 }
 
 @Composable
-fun MenuListCard(menuName: String, icon: Int) {
+fun MenuListCard(navController: NavController ,menuName: String, icon: String, route: String) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Card(
             modifier = Modifier
                 .width(62.dp)
-                .height(62.dp),
+                .height(62.dp)
+                .clickable{
+                    //TODO: Need to get the route from api response.
+                    navController.navigate(route)
+                },
             colors = CardDefaults.cardColors(containerColor = Color.White),
             border = BorderStroke(1.dp, color = CardBorderColor),
             elevation = CardDefaults.cardElevation(0.dp),
@@ -329,19 +379,19 @@ fun MenuListCard(menuName: String, icon: Int) {
                 verticalArrangement = Arrangement.Center,
                 modifier = Modifier.fillMaxSize()
             ) {
-                Icon(
-                    painterResource(icon),
-                    contentDescription = "Previous",
-                    tint = Color(0xFFD1422B),
-                    modifier = Modifier.size(25.dp)
+                AsyncImage(
+                    model = icon,
+                    contentDescription = "Menu Icon",
+                    modifier = Modifier
+                        .width(38.dp)
+                        .height(38.dp)
                 )
             }
         }
         Text(
             text = menuName,
             color = Color(0xFFD1422B),
-            fontWeight = FontWeight.Medium,
-            fontSize = 12.sp,
+            style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(top = 6.dp, start = 5.dp, end = 5.dp, bottom = 0.dp)
         )
     }

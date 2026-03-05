@@ -17,6 +17,7 @@ fun PageNodeDto.toPageNodeDomain(): PageNode =
         languages = this.languages.toList(),
     )
 
+fun PageNodeDto.toDomain(): PageNode = toPageNodeDomain()
 fun PageNode.toData(): PageNodeDto =
     PageNodeDto(
         route = this.route,

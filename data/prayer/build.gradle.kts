@@ -69,4 +69,14 @@ dependencies {
     // Kotlin testing modules
     testImplementation(libs.kotlin.test)
     testImplementation(libs.mockk)
+
+    // Ktor Network
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.logging)
+
+    //Coil
+    implementation(libs.coil.compose)
 }

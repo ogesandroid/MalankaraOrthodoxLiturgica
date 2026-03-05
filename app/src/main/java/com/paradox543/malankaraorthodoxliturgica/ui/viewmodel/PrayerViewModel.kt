@@ -2,6 +2,8 @@ package com.paradox543.malankaraorthodoxliturgica.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.paradox543.malankaraorthodoxliturgica.domain.home.model.HomeMenusModel
+import com.paradox543.malankaraorthodoxliturgica.domain.home.repository.HomeRepository
 import com.paradox543.malankaraorthodoxliturgica.domain.prayer.model.PrayerElement
 import com.paradox543.malankaraorthodoxliturgica.domain.prayer.usecase.GetPrayerScreenContentUseCase
 import com.paradox543.malankaraorthodoxliturgica.domain.prayer.usecase.GetSongKeyPriorityUseCase
@@ -28,6 +30,7 @@ import javax.inject.Inject
 class PrayerViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
     private val translationsRepository: TranslationsRepository,
+    private val homeRepository: HomeRepository,
     private val analyticsService: AnalyticsService,
     private val inAppReviewManager: InAppReviewManager,
     private val getPrayerScreenContentUseCase: GetPrayerScreenContentUseCase,
@@ -48,9 +51,17 @@ class PrayerViewModel @Inject constructor(
 
     private val _dynamicSongKey = MutableStateFlow<String?>(null)
     val dynamicSongKey: StateFlow<String?> = _dynamicSongKey.asStateFlow()
+    private val _menuList = MutableStateFlow<List<HomeMenusModel.Menu>>(emptyList())
+    val menuList: StateFlow<List<HomeMenusModel.Menu>> = _menuList
+
+    private val _bannerImg = MutableStateFlow<List<String>>(emptyList())
+    val bannerImg: StateFlow<List<String>> = _bannerImg.asStateFlow()
 
     private val _requestReview = MutableSharedFlow<Unit>()
     val requestReview = _requestReview.asSharedFlow()
+
+    private val _isLoading = MutableStateFlow<Boolean>(false)
+    val isLoading: StateFlow<Boolean> = _isLoading
 
     init {
         // Observe language from SettingsViewModel and trigger translation loading
@@ -58,6 +69,7 @@ class PrayerViewModel @Inject constructor(
             selectedLanguage.collect { language ->
                 // When the language changes (from DataStore), load translations
                 loadTranslations(language)
+                loadMenus(language)
             }
         }
         viewModelScope.launch {
@@ -73,6 +85,24 @@ class PrayerViewModel @Inject constructor(
         viewModelScope.launch {
             val loadedTranslations = translationsRepository.loadTranslations(language)
             _translations.update { loadedTranslations }
+        }
+    }
+
+    private fun loadMenus(language: AppLanguage) {
+        _isLoading.update { true }
+        viewModelScope.launch {
+            homeRepository.getHomeMenuList()
+                .onSuccess { homeMenusModel ->
+                    _isLoading.update { false }
+                    _menuList.update { homeMenusModel.menu }
+                    _bannerImg.update {
+                        homeMenusModel.bannerImages.map { it.bannerImage }
+                    }
+                }
+                .onFailure {
+                    // handle error
+                    _isLoading.update { false }
+                }
         }
     }
 

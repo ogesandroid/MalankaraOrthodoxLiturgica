@@ -66,4 +66,14 @@ dependencies {
     testImplementation(libs.kotlinx.test.junit)
     testImplementation(libs.kotlinx.test.annotations.common)
     testImplementation(libs.mockk)
+
+    // Ktor Network
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.logging)
+
+    //Coil
+    implementation(libs.coil.compose)
 }

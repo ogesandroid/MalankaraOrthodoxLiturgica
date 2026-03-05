@@ -465,7 +465,6 @@ fun DisplayEvent(
                     verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
                     bibleReadings.vespersGospel?.let  { vespersGospel ->
-                        Log.e("sgfhsgdf", vespersGospel.toString())
                         val text =
                             bibleViewModel.formatGospelEntry(
                                 vespersGospel,

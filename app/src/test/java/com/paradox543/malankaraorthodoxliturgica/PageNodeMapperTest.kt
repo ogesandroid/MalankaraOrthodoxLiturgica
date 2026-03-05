@@ -2,6 +2,9 @@ package com.paradox543.malankaraorthodoxliturgica
 
 import com.paradox543.malankaraorthodoxliturgica.data.bible.mapping.toData
 import com.paradox543.malankaraorthodoxliturgica.data.bible.mapping.toDomain
+import com.paradox543.malankaraorthodoxliturgica.data.prayer.mapping.toData
+import com.paradox543.malankaraorthodoxliturgica.data.prayer.mapping.toDomain
+import com.paradox543.malankaraorthodoxliturgica.data.prayer.mapping.toPageNodeDomain
 import com.paradox543.malankaraorthodoxliturgica.data.prayer.model.PageNodeDto
 import com.paradox543.malankaraorthodoxliturgica.shared.domain.model.PageNodeDomain
 import org.junit.Assert.assertEquals
@@ -22,7 +25,7 @@ class PageNodeMapperTest {
                 languages = listOf("en", "ml"),
             )
 
-        val domain = data.toDomain()
+        val domain = data.toPageNodeDomain()
         assertEquals(PageNodeDomain::class, domain::class)
         assertEquals("home", domain.route)
         assertEquals("index.html", domain.filename)

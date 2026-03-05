@@ -153,6 +153,16 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling) // Compose tooling for previews and inspection
     implementation(libs.androidx.ui.tooling.preview)  // Compose tooling for viewing previews
     debugImplementation(libs.androidx.ui.test.manifest) // Compose test manifest for UI testing
+
+    // Ktor Network
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.logging)
+
+    //Coil
+    implementation(libs.coil.compose)
 }
 
 kotlin {

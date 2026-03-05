@@ -1,7 +1,7 @@
 package com.paradox543.malankaraorthodoxliturgica
 
-import com.paradox543.malankaraorthodoxliturgica.data.bible.mapping.toData
-import com.paradox543.malankaraorthodoxliturgica.data.bible.mapping.toDomain
+import com.paradox543.malankaraorthodoxliturgica.data.prayer.mapping.toData
+import com.paradox543.malankaraorthodoxliturgica.data.prayer.mapping.toDomain
 import com.paradox543.malankaraorthodoxliturgica.data.prayer.model.PrayerElementDto
 import com.paradox543.malankaraorthodoxliturgica.domain.prayer.model.PrayerElement
 import org.junit.Assert.assertEquals

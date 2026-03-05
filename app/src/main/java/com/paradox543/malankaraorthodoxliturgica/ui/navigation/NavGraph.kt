@@ -73,7 +73,7 @@ fun NavGraph(
         ) {
             val prayerViewModel: PrayerViewModel = hiltViewModel()
             val prayerNavViewModel: PrayerNavViewModel = hiltViewModel()
-            HomeScreen(navController, prayerViewModel, prayerNavViewModel, inAppReviewManager)
+            HomeScreen(navController, prayerViewModel, bibleViewModel,prayerNavViewModel, inAppReviewManager)
         }
 
         composable(AppScreen.Onboarding.route) {
@@ -97,7 +97,7 @@ fun NavGraph(
             val route = backStackEntry.arguments?.getString(AppScreen.Section.ARG_ROUTE) ?: ""
             val node = prayerNavViewModel.findNode(route)
             if (node != null) {
-                SectionScreen(navController, prayerViewModel, node, inAppReviewManager)
+                SectionScreen(navController, prayerViewModel, bibleViewModel,node, inAppReviewManager)
             } else {
                 ContentNotReadyScreen(navController, message = route)
             }
