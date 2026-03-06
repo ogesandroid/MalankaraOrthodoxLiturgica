@@ -20,6 +20,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -38,8 +39,8 @@ fun SectionNavBar(
     var qrBitmap by remember { mutableStateOf<Bitmap?>(null) }
 
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.primary,
-        contentColor = MaterialTheme.colorScheme.onPrimary,
+        containerColor = Color.White,
+        contentColor = Color(0xFFD1422B),
     ) {
         NavigationBarItem(
             icon = {
@@ -58,10 +59,10 @@ fun SectionNavBar(
             },
             colors =
                 NavigationBarItemDefaults.colors(
-                    unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
-                    unselectedTextColor = MaterialTheme.colorScheme.onPrimary,
-                    disabledIconColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.3f),
-                    disabledTextColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.3f),
+                    unselectedIconColor = Color(0xFFD1422B),
+                    unselectedTextColor = Color(0xFFD1422B),
+                    disabledIconColor = Color(0xFFD1422B).copy(alpha = 0.3f),
+                    disabledTextColor = Color(0xFFD1422B).copy(alpha = 0.3f),
                 ),
         )
         NavigationBarItem(
@@ -77,10 +78,10 @@ fun SectionNavBar(
             },
             colors =
                 NavigationBarItemDefaults.colors(
-                    unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
-                    unselectedTextColor = MaterialTheme.colorScheme.onPrimary,
-                    disabledIconColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.3f),
-                    disabledTextColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.3f),
+                    unselectedIconColor = Color.Gray,
+                    unselectedTextColor = Color.Gray,
+                    disabledIconColor = Color(0xFFD1422B).copy(alpha = 0.3f),
+                    disabledTextColor = Color(0xFFD1422B).copy(alpha = 0.3f),
                 ),
         )
         NavigationBarItem(
@@ -100,10 +101,10 @@ fun SectionNavBar(
             },
             colors =
                 NavigationBarItemDefaults.colors(
-                    unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
-                    unselectedTextColor = MaterialTheme.colorScheme.onPrimary,
-                    disabledIconColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.3f),
-                    disabledTextColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.3f),
+                    unselectedIconColor = Color(0xFFD1422B),
+                    unselectedTextColor = Color(0xFFD1422B),
+                    disabledIconColor = Color(0xFFD1422B).copy(alpha = 0.3f),
+                    disabledTextColor = Color(0xFFD1422B).copy(alpha = 0.3f),
                 ),
         )
     }

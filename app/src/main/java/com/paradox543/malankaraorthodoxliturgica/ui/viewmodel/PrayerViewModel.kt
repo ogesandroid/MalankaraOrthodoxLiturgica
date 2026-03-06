@@ -57,6 +57,9 @@ class PrayerViewModel @Inject constructor(
     private val _bannerImg = MutableStateFlow<List<String>>(emptyList())
     val bannerImg: StateFlow<List<String>> = _bannerImg.asStateFlow()
 
+    private val _bibleReadings = MutableStateFlow<List<HomeMenusModel.BibleReadings>>(emptyList())
+    val bibleReadings: StateFlow<List<HomeMenusModel.BibleReadings>> = _bibleReadings
+
     private val _requestReview = MutableSharedFlow<Unit>()
     val requestReview = _requestReview.asSharedFlow()
 
@@ -88,16 +91,18 @@ class PrayerViewModel @Inject constructor(
         }
     }
 
+    //Function to get the menus listing from api
     private fun loadMenus(language: AppLanguage) {
         _isLoading.update { true }
         viewModelScope.launch {
-            homeRepository.getHomeMenuList()
+            homeRepository.getHomeMenuList(language)
                 .onSuccess { homeMenusModel ->
-                    _isLoading.update { false }
-                    _menuList.update { homeMenusModel.menu }
-                    _bannerImg.update {
+                    _isLoading.update { false } // updating the loading value.
+                    _menuList.update { homeMenusModel.menu } // updating the menus to list on home screen.
+                    _bannerImg.update { // Updating the banner image.
                         homeMenusModel.bannerImages.map { it.bannerImage }
                     }
+                    _bibleReadings.update { homeMenusModel.bibleReadings } // updating the bible readings to redirect
                 }
                 .onFailure {
                     // handle error

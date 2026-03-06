@@ -7,6 +7,8 @@ import kotlinx.serialization.Serializable
 data class HomeMenusModel(
     @SerialName("bannerImages")
     val bannerImages: List<BannerImage>,
+    @SerialName("bibleReadings")
+    val bibleReadings: List<BibleReadings>,
     @SerialName("code")
     val code: Int,
     @SerialName("companyName")
@@ -29,6 +31,28 @@ data class HomeMenusModel(
         @SerialName("banner_type")
         val bannerType: Int
     )
+
+    @Serializable
+    data class BibleReadings(
+        @SerialName("bookNumber")
+        val bookNumber: Int,
+        @SerialName("verseText")
+        val verseText: String,
+        @SerialName("ranges")
+        val ranges: List<Ranges>
+    ) {
+        @Serializable
+        data class Ranges(
+            @SerialName("startChapter")
+            val startChapter: Int,
+            @SerialName("startVerse")
+            val startVerse: Int,
+            @SerialName("endChapter")
+            val endChapter: Int,
+            @SerialName("endVerse")
+            val endVerse: Int
+        )
+    }
 
     @Serializable
     data class Menu(

@@ -24,6 +24,7 @@ import com.paradox543.malankaraorthodoxliturgica.ui.screens.HomeScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.OnboardingScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.PrayNowScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.PrayerScreen
+import com.paradox543.malankaraorthodoxliturgica.ui.screens.SectionListingScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.SectionScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.SettingsScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.SongScreen
@@ -100,6 +101,24 @@ fun NavGraph(
                 SectionScreen(navController, prayerViewModel, bibleViewModel,node, inAppReviewManager)
             } else {
                 ContentNotReadyScreen(navController, message = route)
+            }
+        }
+
+        composable(AppScreen.SectionList.route,
+            arguments =
+                listOf(
+                    navArgument(AppScreen.SectionList.ARG_ROUTE) {
+                        type = NavType.StringType
+                    },
+                ),
+            deepLinks = AppScreen.SectionList.DEEP_LINK_PATTERN?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList()
+        ) { backStackEntry ->
+            val prayerNavViewModel: PrayerNavViewModel = hiltViewModel(backStackEntry)
+            val prayerViewModel: PrayerViewModel = hiltViewModel(backStackEntry)
+            val route = backStackEntry.arguments?.getString(AppScreen.Section.ARG_ROUTE) ?: ""
+            val node = prayerNavViewModel.findNode(route)
+            if (node != null) {
+                SectionListingScreen(navController, prayerViewModel, node)
             }
         }
 

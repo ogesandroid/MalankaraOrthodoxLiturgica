@@ -49,6 +49,7 @@ import coil.compose.AsyncImage
 import com.paradox543.malankaraorthodoxliturgica.R
 import com.paradox543.malankaraorthodoxliturgica.domain.bible.model.BibleReference
 import com.paradox543.malankaraorthodoxliturgica.domain.bible.model.ReferenceRange
+import com.paradox543.malankaraorthodoxliturgica.domain.home.model.HomeMenusModel
 import com.paradox543.malankaraorthodoxliturgica.domain.prayer.model.PageNode
 import com.paradox543.malankaraorthodoxliturgica.services.InAppReviewManager
 import com.paradox543.malankaraorthodoxliturgica.ui.components.BottomNavBar
@@ -73,8 +74,8 @@ fun SectionScreen(
     val menus by prayerViewModel.menuList.collectAsState()
     val banner by prayerViewModel.bannerImg.collectAsState()
     val isLoading by prayerViewModel.isLoading.collectAsState()
+    val bibleReading by prayerViewModel.bibleReadings.collectAsState()
     val nodes = node.children
-    Log.e("ahgsf",nodes.toString())
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
     var title = ""
@@ -112,7 +113,13 @@ fun SectionScreen(
             } else {
                 if (screenWidth > 600.dp) {
                     Row {
-                        DisplayIconography(bibleViewModel,navController,"row", banner)
+                        DisplayIconography(
+                            bibleViewModel,
+                            navController,
+                            "row",
+                            banner,
+                            bibleReading
+                        )
                         LazyVerticalGrid(
                             columns = GridCells.Adaptive(240.dp),
                             modifier = Modifier.fillMaxSize(),
@@ -129,7 +136,12 @@ fun SectionScreen(
                                     items(menus) { menu ->
 
                                         //TODO: Need to pass the route from the api response.
-                                        MenuListCard(navController,menu.name, menu.icon, AppScreen.Calendar.route)
+                                        MenuListCard(
+                                            navController,
+                                            menu.name,
+                                            menu.icon,
+                                            AppScreen.Calendar.route
+                                        )
                                     }
                                 }
                             }
@@ -152,7 +164,13 @@ fun SectionScreen(
                             horizontalArrangement = Arrangement.SpaceEvenly,
                         ) {
                             item {
-                                DisplayIconography(bibleViewModel,navController,"column", banner)
+                                DisplayIconography(
+                                    bibleViewModel,
+                                    navController,
+                                    "column",
+                                    banner,
+                                    bibleReading
+                                )
                             }
                             item {
                                 LazyRow(
@@ -164,7 +182,12 @@ fun SectionScreen(
                                 ) {
                                     items(menus) { menu ->
                                         //TODO: Need to pass the route from the api response.
-                                        MenuListCard(navController,menu.name, menu.icon,AppScreen.Calendar.route)
+                                        MenuListCard(
+                                            navController,
+                                            menu.name,
+                                            menu.icon,
+                                            AppScreen.Calendar.route
+                                        )
                                     }
                                 }
                             }
@@ -184,7 +207,13 @@ fun SectionScreen(
 }
 
 @Composable
-private fun DisplayIconography(bibleViewModel: BibleViewModel, navController: NavController, orientation: String, banner: List<String>) {
+private fun DisplayIconography(
+    bibleViewModel: BibleViewModel,
+    navController: NavController,
+    orientation: String,
+    banner: List<String>,
+    bibleReadings: List<HomeMenusModel.BibleReadings>
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -215,7 +244,7 @@ private fun DisplayIconography(bibleViewModel: BibleViewModel, navController: Na
                 )
             }
             Text(
-                text = "\"For I know the plans I have for you,\" declares the Lord, \"plans to prosper you and not to harm you, plans to give you hope and a future.\"",
+                text = if (bibleReadings.isNotEmpty()) bibleReadings[0].verseText else "",
                 color = Color(0xFF555353),
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 10.dp, bottom = 0.dp)
@@ -232,33 +261,41 @@ private fun DisplayIconography(bibleViewModel: BibleViewModel, navController: Na
                     color = Color(0xFFD1422B),
                     style = MaterialTheme.typography.bodyMedium,
                 )
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    TextButton(
-                        onClick = {
-                            //TODO: Need data from the api response.
-                            val entries = listOf(
-                                BibleReference(
-                                    bookNumber = 1,
-                                    ranges = listOf(ReferenceRange(startChapter = 5, startVerse = 1, endChapter = 5, endVerse = 0)),
-                                ),
-                            )
-                            bibleViewModel.setSelectedBibleReference(entries) // Pass the data to the bible model to get the readings.
-                            navController.navigate(AppScreen.BibleReader.route) // Redirection to bible reading page.
-                        }
+                if (bibleReadings.isNotEmpty()) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(
-                            text = "Read More ",
-                            color = Color(0xFF0D6BD7),
-                            textDecoration = TextDecoration.Underline,
-                            style = MaterialTheme.typography.bodyMedium,
-                        )
-                        Icon(
-                            painterResource(R.drawable.ic_right_arrow),
-                            tint = Color(0xFF0D6BD7),
-                            contentDescription = "Arrow",
-                        )
+                        TextButton(
+                            onClick = {
+                                val entries = bibleReadings.map { reading ->
+                                    BibleReference(
+                                        bookNumber = reading.bookNumber,
+                                        ranges = reading.ranges.map { range ->
+                                            ReferenceRange(
+                                                startChapter = range.startChapter,
+                                                startVerse = range.startVerse,
+                                                endChapter = range.endChapter,
+                                                endVerse = range.endVerse
+                                            )
+                                        }
+                                    )
+                                }
+                                bibleViewModel.setSelectedBibleReference(entries) // Pass the data to the bible model to get the readings.
+                                navController.navigate(AppScreen.BibleReader.route) // Redirection to bible reading page.
+                            }
+                        ) {
+                            Text(
+                                text = "Read More ",
+                                color = Color(0xFF0D6BD7),
+                                textDecoration = TextDecoration.Underline,
+                                style = MaterialTheme.typography.bodyMedium,
+                            )
+                            Icon(
+                                painterResource(R.drawable.ic_right_arrow),
+                                tint = Color(0xFF0D6BD7),
+                                contentDescription = "Arrow",
+                            )
+                        }
                     }
                 }
             }
@@ -279,7 +316,7 @@ private fun SectionCard(
             .clickable {
                 if (node.children.isNotEmpty()) {
                     Log.d("SectionCard", "Navigating to section: ${node.route}")
-                    navController.navigate(AppScreen.Section.createRoute(node.route))
+                    navController.navigate(AppScreen.SectionList.createRoute(node.route))
                 } else if (node.filename != null && node.filename?.endsWith(".json") == true) {
                     navController.navigate(AppScreen.Prayer.createRoute(node.route))
                 } else if (node.type == "song" || (node.filename != null && node.filename!!.endsWith(
@@ -359,7 +396,7 @@ private fun SectionCard(
 }
 
 @Composable
-fun MenuListCard(navController: NavController ,menuName: String, icon: String, route: String) {
+fun MenuListCard(navController: NavController, menuName: String, icon: String, route: String) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -367,7 +404,7 @@ fun MenuListCard(navController: NavController ,menuName: String, icon: String, r
             modifier = Modifier
                 .width(62.dp)
                 .height(62.dp)
-                .clickable{
+                .clickable {
                     //TODO: Need to get the route from api response.
                     navController.navigate(route)
                 },

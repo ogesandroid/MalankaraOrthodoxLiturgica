@@ -31,6 +31,12 @@ sealed class AppScreen(
         fun createDeepLink(sectionRoute: String) = "app://liturgica/section/$sectionRoute"
     }
 
+    object SectionList: AppScreen("sectionList/{route}") {
+        const val ARG_ROUTE = "route"
+        const val DEEP_LINK_PATTERN = "app://liturgica/sectionList/{$ARG_ROUTE}"
+        fun createRoute(sectionListRoute: String) = "sectionList/$sectionListRoute"
+    }
+
     object Prayer : AppScreen("prayer/{route}/{scroll}") {
         const val ARG_ROUTE = "route"
         const val ARG_SCROLL = "scroll"
