@@ -28,6 +28,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
@@ -185,8 +186,7 @@ private fun PrayNowCard(
         shape = RoundedCornerShape(8.dp),
         colors =
             CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                containerColor = Color(0xFFD1422B)
             ),
         elevation = CardDefaults.cardElevation(4.dp),
     ) {
@@ -196,6 +196,7 @@ private fun PrayNowCard(
             Text(
                 translatedParts,
                 style = MaterialTheme.typography.bodyLarge,
+                color = Color.White,
                 modifier = Modifier.padding(16.dp),
             )
             if (errorState) {

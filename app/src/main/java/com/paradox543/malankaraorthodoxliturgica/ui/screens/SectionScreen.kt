@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -240,7 +241,7 @@ private fun DisplayIconography(bibleViewModel: BibleViewModel, navController: Na
                             val entries = listOf(
                                 BibleReference(
                                     bookNumber = 1,
-                                    ranges = listOf(ReferenceRange(startChapter = 5, startVerse = 1, endChapter = 5, endVerse = 12)),
+                                    ranges = listOf(ReferenceRange(startChapter = 5, startVerse = 1, endChapter = 5, endVerse = 0)),
                                 ),
                             )
                             bibleViewModel.setSelectedBibleReference(entries) // Pass the data to the bible model to get the readings.
@@ -390,7 +391,7 @@ fun MenuListCard(navController: NavController ,menuName: String, icon: String, r
         }
         Text(
             text = menuName,
-            color = Color(0xFFD1422B),
+            color = if (isSystemInDarkTheme()) Color.White else Color(0xFFD1422B),
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(top = 6.dp, start = 5.dp, end = 5.dp, bottom = 0.dp)
         )
