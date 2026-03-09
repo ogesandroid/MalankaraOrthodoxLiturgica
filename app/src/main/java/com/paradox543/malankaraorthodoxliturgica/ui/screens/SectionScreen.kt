@@ -75,6 +75,7 @@ fun SectionScreen(
     val banner by prayerViewModel.bannerImg.collectAsState()
     val isLoading by prayerViewModel.isLoading.collectAsState()
     val bibleReading by prayerViewModel.bibleReadings.collectAsState()
+    val bookName by prayerViewModel.bibleBookName.collectAsState()
     val nodes = node.children
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
@@ -118,7 +119,8 @@ fun SectionScreen(
                             navController,
                             "row",
                             banner,
-                            bibleReading
+                            bibleReading,
+                            bookName
                         )
                         LazyVerticalGrid(
                             columns = GridCells.Adaptive(240.dp),
@@ -169,7 +171,8 @@ fun SectionScreen(
                                     navController,
                                     "column",
                                     banner,
-                                    bibleReading
+                                    bibleReading,
+                                    bookName
                                 )
                             }
                             item {
@@ -212,7 +215,8 @@ private fun DisplayIconography(
     navController: NavController,
     orientation: String,
     banner: List<String>,
-    bibleReadings: List<HomeMenusModel.BibleReadings>
+    bibleReadings: List<HomeMenusModel.BibleReadings>,
+    bookName: String?
 ) {
     Card(
         modifier = Modifier
@@ -256,12 +260,13 @@ private fun DisplayIconography(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = "Jeremiah 29:11",
-                    color = Color(0xFFD1422B),
-                    style = MaterialTheme.typography.bodyMedium,
-                )
                 if (bibleReadings.isNotEmpty()) {
+                    val range = bibleReadings[0].ranges.firstOrNull()
+                    Text(
+                        text = "$bookName ${range?.startChapter}:${range?.startVerse}",
+                        color = Color(0xFFD1422B),
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {

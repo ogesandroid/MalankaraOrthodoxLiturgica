@@ -2,6 +2,7 @@ package com.paradox543.malankaraorthodoxliturgica.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.paradox543.malankaraorthodoxliturgica.domain.bible.repository.BibleRepository
 import com.paradox543.malankaraorthodoxliturgica.domain.home.model.HomeMenusModel
 import com.paradox543.malankaraorthodoxliturgica.domain.home.repository.HomeRepository
 import com.paradox543.malankaraorthodoxliturgica.domain.prayer.model.PrayerElement
@@ -31,6 +32,7 @@ class PrayerViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
     private val translationsRepository: TranslationsRepository,
     private val homeRepository: HomeRepository,
+    private val bibleRepository: BibleRepository,
     private val analyticsService: AnalyticsService,
     private val inAppReviewManager: InAppReviewManager,
     private val getPrayerScreenContentUseCase: GetPrayerScreenContentUseCase,
@@ -60,6 +62,9 @@ class PrayerViewModel @Inject constructor(
     private val _bibleReadings = MutableStateFlow<List<HomeMenusModel.BibleReadings>>(emptyList())
     val bibleReadings: StateFlow<List<HomeMenusModel.BibleReadings>> = _bibleReadings
 
+    private val _bibleBookName = MutableStateFlow<String?>(null)
+    val bibleBookName: StateFlow<String?> = _bibleBookName
+
     private val _requestReview = MutableSharedFlow<Unit>()
     val requestReview = _requestReview.asSharedFlow()
 
@@ -84,6 +89,10 @@ class PrayerViewModel @Inject constructor(
         }
     }
 
+    fun loadBibleBook(bookNumber: Int, language: AppLanguage) {
+        _bibleBookName.update { bibleRepository.getBibleBookName(bookNumber - 1, language) }
+    }
+
     private fun loadTranslations(language: AppLanguage) {
         viewModelScope.launch {
             val loadedTranslations = translationsRepository.loadTranslations(language)
@@ -103,6 +112,12 @@ class PrayerViewModel @Inject constructor(
                         homeMenusModel.bannerImages.map { it.bannerImage }
                     }
                     _bibleReadings.update { homeMenusModel.bibleReadings } // updating the bible readings to redirect
+                    homeMenusModel.bibleReadings.firstOrNull()?.bookNumber?.let {
+                        loadBibleBook(
+                            it,
+                            language = language,
+                        )
+                    }
                 }
                 .onFailure {
                     // handle error
