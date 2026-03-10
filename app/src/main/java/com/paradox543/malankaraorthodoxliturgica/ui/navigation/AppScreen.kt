@@ -22,6 +22,8 @@ sealed class AppScreen(
 
     object About : AppScreen("about", "app://liturgica/about")
 
+    object Locations : AppScreen("locations", "app://liturgica/locations")
+
     object Section : AppScreen("section/{route}") {
         const val ARG_ROUTE = "route"
         const val DEEP_LINK_PATTERN = "app://liturgica/section/{$ARG_ROUTE}"

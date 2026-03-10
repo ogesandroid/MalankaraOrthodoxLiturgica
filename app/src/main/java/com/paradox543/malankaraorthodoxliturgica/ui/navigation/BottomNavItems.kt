@@ -1,8 +1,6 @@
 package com.paradox543.malankaraorthodoxliturgica.ui.navigation
 
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Icon
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -32,10 +30,17 @@ val bottomNavItems =
 //                modifier = Modifier.size(iconSize),
 //            )
 //        },
-        BottomNavItem("calendar", "Calendar") {
+        /*BottomNavItem("calendar", "Calendar") {
             Icon(
                 painterResource(R.drawable.calendar),
                 "Calendar",
+                Modifier.size(iconSize),
+            )
+        },*/
+        BottomNavItem("locations", "Locations") {
+            Icon(
+                painterResource(R.drawable.ic_locations),
+                "Locations",
                 Modifier.size(iconSize),
             )
         },

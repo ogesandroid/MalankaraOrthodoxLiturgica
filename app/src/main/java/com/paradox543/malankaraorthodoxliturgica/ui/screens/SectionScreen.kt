@@ -141,8 +141,7 @@ fun SectionScreen(
                                         MenuListCard(
                                             navController,
                                             menu.name,
-                                            menu.icon,
-                                            AppScreen.Calendar.route
+                                            menu.icon
                                         )
                                     }
                                 }
@@ -188,8 +187,7 @@ fun SectionScreen(
                                         MenuListCard(
                                             navController,
                                             menu.name,
-                                            menu.icon,
-                                            AppScreen.Calendar.route
+                                            menu.icon
                                         )
                                     }
                                 }
@@ -401,7 +399,7 @@ private fun SectionCard(
 }
 
 @Composable
-fun MenuListCard(navController: NavController, menuName: String, icon: String, route: String) {
+fun MenuListCard(navController: NavController, menuName: String, icon: String) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -410,8 +408,20 @@ fun MenuListCard(navController: NavController, menuName: String, icon: String, r
                 .width(62.dp)
                 .height(62.dp)
                 .clickable {
-                    //TODO: Need to get the route from api response.
-                    navController.navigate(route)
+                    when (menuName) {
+                        "Calendar" -> {
+                            navController.navigate(AppScreen.Calendar.route)
+                        }
+                        "Bible" -> {
+                            navController.navigate(AppScreen.Bible.route)
+                        }
+                        "Videos" -> {
+                            //navController.navigate(AppScreen.Locations.route)
+                        }
+                        "Songs" -> {
+                            navController.navigate(AppScreen.Song.route)
+                        }
+                    }
                 },
             colors = CardDefaults.cardColors(containerColor = Color.White),
             border = BorderStroke(1.dp, color = CardBorderColor),

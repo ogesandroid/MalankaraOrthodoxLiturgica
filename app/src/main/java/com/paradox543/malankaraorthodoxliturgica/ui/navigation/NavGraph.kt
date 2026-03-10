@@ -21,6 +21,7 @@ import com.paradox543.malankaraorthodoxliturgica.ui.screens.BibleScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.CalendarScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.ContentNotReadyScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.HomeScreen
+import com.paradox543.malankaraorthodoxliturgica.ui.screens.LocationsScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.OnboardingScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.PrayNowScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.PrayerScreen
@@ -70,11 +71,18 @@ fun NavGraph(
     ) {
         composable(
             AppScreen.Home.route,
-            deepLinks = AppScreen.Home.deepLink?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList(),
+            deepLinks = AppScreen.Home.deepLink?.let { listOf(navDeepLink { uriPattern = it }) }
+                ?: emptyList(),
         ) {
             val prayerViewModel: PrayerViewModel = hiltViewModel()
             val prayerNavViewModel: PrayerNavViewModel = hiltViewModel()
-            HomeScreen(navController, prayerViewModel, bibleViewModel,prayerNavViewModel, inAppReviewManager)
+            HomeScreen(
+                navController,
+                prayerViewModel,
+                bibleViewModel,
+                prayerNavViewModel,
+                inAppReviewManager
+            )
         }
 
         composable(AppScreen.Onboarding.route) {
@@ -91,27 +99,42 @@ fun NavGraph(
                         type = NavType.StringType
                     },
                 ),
-            deepLinks = AppScreen.Section.DEEP_LINK_PATTERN?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList(),
+            deepLinks = AppScreen.Section.DEEP_LINK_PATTERN?.let {
+                listOf(navDeepLink {
+                    uriPattern = it
+                })
+            } ?: emptyList(),
         ) { backStackEntry ->
             val prayerNavViewModel: PrayerNavViewModel = hiltViewModel(backStackEntry)
             val prayerViewModel: PrayerViewModel = hiltViewModel(backStackEntry)
             val route = backStackEntry.arguments?.getString(AppScreen.Section.ARG_ROUTE) ?: ""
             val node = prayerNavViewModel.findNode(route)
             if (node != null) {
-                SectionScreen(navController, prayerViewModel, bibleViewModel,node, inAppReviewManager)
+                SectionScreen(
+                    navController,
+                    prayerViewModel,
+                    bibleViewModel,
+                    node,
+                    inAppReviewManager
+                )
             } else {
                 ContentNotReadyScreen(navController, message = route)
             }
         }
 
-        composable(AppScreen.SectionList.route,
+        composable(
+            AppScreen.SectionList.route,
             arguments =
                 listOf(
                     navArgument(AppScreen.SectionList.ARG_ROUTE) {
                         type = NavType.StringType
                     },
                 ),
-            deepLinks = AppScreen.SectionList.DEEP_LINK_PATTERN?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList()
+            deepLinks = AppScreen.SectionList.DEEP_LINK_PATTERN?.let {
+                listOf(navDeepLink {
+                    uriPattern = it
+                })
+            } ?: emptyList()
         ) { backStackEntry ->
             val prayerNavViewModel: PrayerNavViewModel = hiltViewModel(backStackEntry)
             val prayerViewModel: PrayerViewModel = hiltViewModel(backStackEntry)
@@ -141,7 +164,11 @@ fun NavGraph(
                         type = NavType.StringType
                     },
                 ),
-            deepLinks = AppScreen.Prayer.DEEP_LINK_PATTERN?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList(),
+            deepLinks = AppScreen.Prayer.DEEP_LINK_PATTERN?.let {
+                listOf(navDeepLink {
+                    uriPattern = it
+                })
+            } ?: emptyList(),
         ) { backStackEntry ->
             val prayerViewModel: PrayerViewModel = hiltViewModel(backStackEntry)
 //            val settingsViewModel: SettingsViewModel = hiltViewModel(backStackEntry)
@@ -192,7 +219,8 @@ fun NavGraph(
 
         composable(
             AppScreen.Bible.route,
-            deepLinks = AppScreen.Bible.deepLink?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList(),
+            deepLinks = AppScreen.Bible.deepLink?.let { listOf(navDeepLink { uriPattern = it }) }
+                ?: emptyList(),
         ) { backStackEntry ->
 //            val settingsViewModel: SettingsViewModel = hiltViewModel(backStackEntry)
 //            val bibleGraphEntry = navController.getBackStackEntry(AppScreen.Bible.route)
@@ -208,13 +236,18 @@ fun NavGraph(
                         type = NavType.StringType
                     },
                 ),
-            deepLinks = AppScreen.BibleBook.DEEP_LINK_PATTERN?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList(),
+            deepLinks = AppScreen.BibleBook.DEEP_LINK_PATTERN?.let {
+                listOf(navDeepLink {
+                    uriPattern = it
+                })
+            } ?: emptyList(),
         ) { backStackEntry ->
 //            val bibleGraphEntry = navController.getBackStackEntry(AppScreen.Bible.route)
             val bibleViewModel: BibleViewModel = hiltViewModel(backStackEntry)
 //            val settingsViewModel: SettingsViewModel = hiltViewModel(backStackEntry)
             val bookIndex =
-                backStackEntry.arguments?.getString(AppScreen.BibleBook.ARG_BOOK_INDEX)?.toIntOrNull()
+                backStackEntry.arguments?.getString(AppScreen.BibleBook.ARG_BOOK_INDEX)
+                    ?.toIntOrNull()
                     ?: 0
             BibleBookScreen(navController, settingsViewModel, bibleViewModel, bookIndex)
         }
@@ -227,7 +260,11 @@ fun NavGraph(
                         type = NavType.StringType
                     },
                 ),
-            deepLinks = AppScreen.BibleChapter.DEEP_LINK_PATTERN?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList(),
+            deepLinks = AppScreen.BibleChapter.DEEP_LINK_PATTERN?.let {
+                listOf(navDeepLink {
+                    uriPattern = it
+                })
+            } ?: emptyList(),
         ) { backStackEntry ->
 //            val bibleGraphEntry = navController.getBackStackEntry(AppScreen.Bible.route)
             val bibleViewModel: BibleViewModel = hiltViewModel(backStackEntry)
@@ -251,7 +288,8 @@ fun NavGraph(
 
         composable(
             AppScreen.Calendar.route,
-            deepLinks = AppScreen.Calendar.deepLink?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList(),
+            deepLinks = AppScreen.Calendar.deepLink?.let { listOf(navDeepLink { uriPattern = it }) }
+                ?: emptyList(),
         ) { backStackEntry ->
 //            val bibleGraphEntry = navController.getBackStackEntry(AppScreen.Calendar.route)
 //            val bibleViewModel: BibleViewModel = hiltViewModel(bibleGraphEntry)
@@ -266,6 +304,10 @@ fun NavGraph(
             BibleReadingScreen(navController, bibleViewModel, settingsViewModel)
         }
 
+        composable(AppScreen.Locations.route) { backStackEntry ->
+            LocationsScreen(navController, "Locations")
+        }
+
         composable(
             AppScreen.QrScanner.route,
         ) {
@@ -274,7 +316,8 @@ fun NavGraph(
 
         composable(
             AppScreen.Settings.route,
-            deepLinks = AppScreen.Settings.deepLink?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList(),
+            deepLinks = AppScreen.Settings.deepLink?.let { listOf(navDeepLink { uriPattern = it }) }
+                ?: emptyList(),
         ) {
 //            val settingsViewModel: SettingsViewModel = hiltViewModel()
             SettingsScreen(navController, settingsViewModel, shareService)
@@ -282,7 +325,8 @@ fun NavGraph(
 
         composable(
             AppScreen.About.route,
-            deepLinks = AppScreen.About.deepLink?.let { listOf(navDeepLink { uriPattern = it }) } ?: emptyList(),
+            deepLinks = AppScreen.About.deepLink?.let { listOf(navDeepLink { uriPattern = it }) }
+                ?: emptyList(),
         ) {
             AboutScreen(navController)
         }
