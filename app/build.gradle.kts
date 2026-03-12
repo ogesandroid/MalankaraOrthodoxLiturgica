@@ -161,6 +161,13 @@ dependencies {
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.ktor.client.logging)
 
+
+    // ExoPlayer for MP4
+    implementation("androidx.media3:media3-exoplayer:1.3.1")
+    implementation("androidx.media3:media3-ui:1.3.1")
+// YouTube Player
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
+
     //Coil
     implementation(libs.coil.compose)
 }

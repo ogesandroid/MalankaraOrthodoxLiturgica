@@ -416,10 +416,10 @@ fun MenuListCard(navController: NavController, menuName: String, icon: String) {
                             navController.navigate(AppScreen.Bible.route)
                         }
                         "Videos" -> {
-                            //navController.navigate(AppScreen.Locations.route)
+                            navController.navigate(AppScreen.Video.route)
                         }
                         "Songs" -> {
-                            navController.navigate(AppScreen.Song.route)
+                            navController.navigate(AppScreen.Song)
                         }
                     }
                 },

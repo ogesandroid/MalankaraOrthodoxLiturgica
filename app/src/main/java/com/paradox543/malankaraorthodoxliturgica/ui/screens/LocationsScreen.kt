@@ -39,7 +39,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
@@ -62,7 +61,8 @@ fun LocationsScreen(
     var searchText by remember { mutableStateOf("") }
     Scaffold(
         topBar = { TopNavBar(title, navController) },
-        bottomBar = { BottomNavBar(navController = navController) }) { innerPadding ->
+        bottomBar = { BottomNavBar(navController = navController) }
+    ) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxWidth()
