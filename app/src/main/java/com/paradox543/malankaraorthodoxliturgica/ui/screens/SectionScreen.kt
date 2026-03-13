@@ -112,7 +112,7 @@ fun SectionScreen(
                     CircularProgressIndicator()
                 }
             } else {
-                if (screenWidth > 600.dp) {
+                /*if (screenWidth > 600.dp) {
                     Row {
                         DisplayIconography(
                             bibleViewModel,
@@ -136,8 +136,6 @@ fun SectionScreen(
                                     )
                                 ) {
                                     items(menus) { menu ->
-
-                                        //TODO: Need to pass the route from the api response.
                                         MenuListCard(
                                             navController,
                                             menu.name,
@@ -183,7 +181,6 @@ fun SectionScreen(
                                     )
                                 ) {
                                     items(menus) { menu ->
-                                        //TODO: Need to pass the route from the api response.
                                         MenuListCard(
                                             navController,
                                             menu.name,
@@ -199,6 +196,50 @@ fun SectionScreen(
                                     translations,
                                 )
                             }
+                        }
+                    }
+                }*/
+                Column {
+                    LazyVerticalGrid(
+                        columns = GridCells.Adaptive(240.dp),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .weight(0.6f),
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                    ) {
+                        item {
+                            DisplayIconography(
+                                bibleViewModel,
+                                navController,
+                                "column",
+                                banner,
+                                bibleReading,
+                                bookName
+                            )
+                        }
+                        item {
+                            LazyRow(
+                                contentPadding = PaddingValues(end = 16.dp),
+                                horizontalArrangement = Arrangement.spacedBy(34.dp),
+                                modifier = Modifier.padding(
+                                    bottom = 16.dp, top = 24.dp, start = 21.dp, end = 21.dp
+                                )
+                            ) {
+                                items(menus) { menu ->
+                                    MenuListCard(
+                                        navController,
+                                        menu.name,
+                                        menu.icon
+                                    )
+                                }
+                            }
+                        }
+                        items(nodes.size) { index ->
+                            SectionCard(
+                                nodes[index],
+                                navController,
+                                translations,
+                            )
                         }
                     }
                 }

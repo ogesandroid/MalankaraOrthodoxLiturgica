@@ -1,6 +1,5 @@
 package com.paradox543.malankaraorthodoxliturgica.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -53,7 +52,6 @@ import com.paradox543.malankaraorthodoxliturgica.domain.calendar.model.CalendarD
 import com.paradox543.malankaraorthodoxliturgica.domain.calendar.model.CalendarWeek
 import com.paradox543.malankaraorthodoxliturgica.domain.calendar.model.LiturgicalEventDetails
 import com.paradox543.malankaraorthodoxliturgica.domain.settings.model.AppLanguage
-import com.paradox543.malankaraorthodoxliturgica.ui.components.BottomNavBar
 import com.paradox543.malankaraorthodoxliturgica.ui.components.TopNavBar
 import com.paradox543.malankaraorthodoxliturgica.ui.navigation.AppScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.BibleViewModel
@@ -85,8 +83,8 @@ fun CalendarScreen(
     val selectedLanguage by settingsViewModel.selectedLanguage.collectAsState()
 
     Scaffold(
-        topBar = { TopNavBar("Calendar", navController) },
-        bottomBar = { BottomNavBar(navController) },
+        topBar = { TopNavBar("Calendar", navController) }
+        //bottomBar = { BottomNavBar(navController) },
     ) { innerPadding ->
         Column(
             modifier =
@@ -385,7 +383,8 @@ private fun RowScope.DayItem(
                     } else {
                         Modifier
                     },
-                ).then(
+                )
+                .then(
                     if (isToday and !isSelected) {
                         Modifier.background(MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f))
                     } else {
@@ -464,7 +463,7 @@ fun DisplayEvent(
                 Column(
                     verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
-                    bibleReadings.vespersGospel?.let  { vespersGospel ->
+                    bibleReadings.vespersGospel?.let { vespersGospel ->
                         val text =
                             bibleViewModel.formatGospelEntry(
                                 vespersGospel,
@@ -564,7 +563,8 @@ fun DisplayEvent(
                             style = MaterialTheme.typography.titleMedium,
                         )
                         oldTestament.forEach { entry ->
-                            val text = bibleViewModel.formatBibleReadingEntry(entry, selectedLanguage)
+                            val text =
+                                bibleViewModel.formatBibleReadingEntry(entry, selectedLanguage)
                             Row {
                                 Spacer(Modifier.padding(8.dp))
                                 TextButton(
@@ -593,7 +593,8 @@ fun DisplayEvent(
                             style = MaterialTheme.typography.titleMedium,
                         )
                         bibleReadings.generalEpistle?.forEach { entry ->
-                            val text = bibleViewModel.formatBibleReadingEntry(entry, selectedLanguage)
+                            val text =
+                                bibleViewModel.formatBibleReadingEntry(entry, selectedLanguage)
                             Row {
                                 Spacer(Modifier.padding(8.dp))
                                 TextButton(
@@ -614,8 +615,9 @@ fun DisplayEvent(
                                 }
                             }
                         }
-                        bibleReadings.paulEpistle?.forEach {  entry ->
-                            val text = bibleViewModel.formatBibleReadingEntry(entry, selectedLanguage)
+                        bibleReadings.paulEpistle?.forEach { entry ->
+                            val text =
+                                bibleViewModel.formatBibleReadingEntry(entry, selectedLanguage)
                             Row {
                                 Spacer(Modifier.padding(8.dp))
                                 TextButton(
