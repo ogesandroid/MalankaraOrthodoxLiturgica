@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
+import androidx.core.graphics.toColorInt
 
 @SuppressLint("SetJavaScriptEnabled")
 class VideoDialog(context: Context, private val videoUrl: String) :
@@ -81,7 +82,7 @@ class VideoDialog(context: Context, private val videoUrl: String) :
                     android.R.drawable.ic_menu_close_clear_cancel
                 )
             )
-            setBackgroundColor(android.graphics.Color.parseColor("#99000000"))
+            setBackgroundColor("#99000000".toColorInt())
             setPadding(16, 16, 16, 16)
             setOnClickListener { dismiss() }
         }

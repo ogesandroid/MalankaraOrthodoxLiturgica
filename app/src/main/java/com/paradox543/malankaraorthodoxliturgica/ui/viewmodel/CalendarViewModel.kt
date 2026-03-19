@@ -90,6 +90,13 @@ class CalendarViewModel @Inject constructor(
                 val nextMonth = _currentCalendarViewDate.value.plusMonths(1)
                 _hasNextMonth.value =
                     calendarRepository.checkMonthDataExists(nextMonth.monthValue, nextMonth.year)
+
+                // Used to show the calendar view with 4 year future from current year.
+               /* val previousMonth = _currentCalendarViewDate.value.minusMonths(1)
+                val nextMonth = _currentCalendarViewDate.value.plusMonths(1)
+                val currentYear = LocalDate.now().year
+                _hasPreviousMonth.value = previousMonth.year >= currentYear - 1
+                _hasNextMonth.value = nextMonth.year <= currentYear + 4*/
             } catch (e: Exception) {
                 _error.value = "Failed to load month data for $month/$year: ${e.message}"
                 System.err.println("Error loading month data: ${e.stackTraceToString()}")

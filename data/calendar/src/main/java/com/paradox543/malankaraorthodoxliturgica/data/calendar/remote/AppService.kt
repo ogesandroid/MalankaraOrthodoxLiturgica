@@ -1,5 +1,6 @@
 package com.paradox543.malankaraorthodoxliturgica.data.calendar.remote
 
+import android.util.Log
 import com.paradox543.malankaraorthodoxliturgica.domain.home.model.HomeMenusModel
 import com.paradox543.malankaraorthodoxliturgica.domain.settings.model.AppLanguage
 import io.ktor.client.call.body
@@ -11,7 +12,7 @@ import kotlinx.serialization.json.put
 object AppService {
 
     private val client = KtorClient.httpClient
-    suspend fun getHomeMenuList(language: AppLanguage): HomeMenusModel =
+    suspend fun getHomeMenuList(language: AppLanguage, appVersion: String?): HomeMenusModel =
         client.post("settings") { // Api call endpoint with post method.
             setBody(buildJsonObject { // request body as json.
                 put("lang", language.code)
