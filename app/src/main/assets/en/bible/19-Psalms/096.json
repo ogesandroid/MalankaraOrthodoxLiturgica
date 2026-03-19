@@ -1,0 +1,58 @@
+{
+    "book": "Psalms",
+    "chapter": 96,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "O sing unto the LORD a new song: sing unto the LORD, all the earth."
+        },
+        {
+            "id": 2,
+            "verse": "Sing unto the LORD, bless his name; show forth his salvation from day to day."
+        },
+        {
+            "id": 3,
+            "verse": "Declare his glory among the heathen, his wonders among all people."
+        },
+        {
+            "id": 4,
+            "verse": "For the LORD is great, and greatly to be praised: he is to be feared above all gods."
+        },
+        {
+            "id": 5,
+            "verse": "For all the gods of the nations are idols: but the LORD made the heavens."
+        },
+        {
+            "id": 6,
+            "verse": "Honour and majesty are before him: strength and beauty are in his sanctuary."
+        },
+        {
+            "id": 7,
+            "verse": "Give unto the LORD, O all of you families of the people, give unto the LORD glory and strength."
+        },
+        {
+            "id": 8,
+            "verse": "Give unto the LORD the glory due unto his name: bring an offering, and come into his courts."
+        },
+        {
+            "id": 9,
+            "verse": "O worship the LORD in the beauty of holiness: fear before him, all the earth."
+        },
+        {
+            "id": 10,
+            "verse": "Say among the heathen that the LORD reigns: the world also shall be established that it shall not be moved: he shall judge the people righteously."
+        },
+        {
+            "id": 11,
+            "verse": "Let the heavens rejoice, and let the earth be glad; let the sea roar, and the fullness thereof."
+        },
+        {
+            "id": 12,
+            "verse": "Let the field be joyful, and all that is therein: then shall all the trees of the wood rejoice"
+        },
+        {
+            "id": 13,
+            "verse": "Before the LORD: for he comes, for he comes to judge the earth: he shall judge the world with righteousness, and the people with his truth."
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "book": "Psalms",
+    "chapter": 16,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "Preserve me, O God: for in you do I put my trust."
+        },
+        {
+            "id": 2,
+            "verse": "O my soul, you have said unto the LORD, You are my Lord: my goodness extends not to you;"
+        },
+        {
+            "id": 3,
+            "verse": "But to the saints that are in the earth, and to the excellent, in whom is all my delight."
+        },
+        {
+            "id": 4,
+            "verse": "Their sorrows shall be multiplied that hasten after another god: their drink offerings of blood will I not offer, nor take up their names into my lips."
+        },
+        {
+            "id": 5,
+            "verse": "The LORD is the portion of mine inheritance and of my cup: you maintain my lot."
+        },
+        {
+            "id": 6,
+            "verse": "The lines are fallen unto me in pleasant places; yea, I have a goodly heritage."
+        },
+        {
+            "id": 7,
+            "verse": "I will bless the LORD, who has given me counsel: my reins also instruct me in the night seasons."
+        },
+        {
+            "id": 8,
+            "verse": "I have set the LORD always before me: because he is at my right hand, I shall not be moved."
+        },
+        {
+            "id": 9,
+            "verse": "Therefore my heart is glad, and my glory rejoices: my flesh also shall rest in hope."
+        },
+        {
+            "id": 10,
+            "verse": "For you will not leave my soul in hell; neither will you suffer yours Holy One to see corruption."
+        },
+        {
+            "id": 11,
+            "verse": "You will show me the path of life: in your presence is fullness of joy; at your right hand there are pleasures for evermore."
+        }
+    ]
+}

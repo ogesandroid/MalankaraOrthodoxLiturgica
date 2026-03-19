@@ -1,0 +1,34 @@
+{
+    "book": "Psalms",
+    "chapter": 67,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "God be merciful unto us, and bless us; and cause his face to shine upon us; Selah."
+        },
+        {
+            "id": 2,
+            "verse": "That your way may be known upon earth, your saving health among all nations."
+        },
+        {
+            "id": 3,
+            "verse": "Let the people praise you, O God; let all the people praise you."
+        },
+        {
+            "id": 4,
+            "verse": "O let the nations be glad and sing for joy: for you shall judge the people righteously, and govern the nations upon earth. Selah."
+        },
+        {
+            "id": 5,
+            "verse": "Let the people praise you, O God; let all the people praise you."
+        },
+        {
+            "id": 6,
+            "verse": "Then shall the earth yield her increase; and God, even our own God, shall bless us."
+        },
+        {
+            "id": 7,
+            "verse": "God shall bless us; and all the ends of the earth shall fear him."
+        }
+    ]
+}

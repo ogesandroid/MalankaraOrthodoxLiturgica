@@ -1,0 +1,210 @@
+{
+    "book": "Joshua",
+    "chapter": 19,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "And the second lot came forth to Simeon, even for the tribe of the children of Simeon according to their families: and their inheritance was within the inheritance of the children of Judah."
+        },
+        {
+            "id": 2,
+            "verse": "And they had in their inheritance Beersheba, and Sheba, and Moladah,"
+        },
+        {
+            "id": 3,
+            "verse": "And Hazarshual, and Balah, and Azem,"
+        },
+        {
+            "id": 4,
+            "verse": "And Eltolad, and Bethul, and Hormah,"
+        },
+        {
+            "id": 5,
+            "verse": "And Ziklag, and Bethmarcaboth, and Hazarsusah,"
+        },
+        {
+            "id": 6,
+            "verse": "And Bethlebaoth, and Sharuhen; thirteen cities and their villages:"
+        },
+        {
+            "id": 7,
+            "verse": "Ain, Remmon, and Ether, and Ashan; four cities and their villages:"
+        },
+        {
+            "id": 8,
+            "verse": "And all the villages that were round about these cities to Baalathbeer, Ramath of the south. This is the inheritance of the tribe of the children of Simeon according to their families."
+        },
+        {
+            "id": 9,
+            "verse": "Out of the portion of the children of Judah was the inheritance of the children of Simeon: for the part of the children of Judah was too much for them: therefore the children of Simeon had their inheritance within the inheritance of them."
+        },
+        {
+            "id": 10,
+            "verse": "And the third lot came up for the children of Zebulun according to their families: and the border of their inheritance was unto Sarid:"
+        },
+        {
+            "id": 11,
+            "verse": "And their border went up toward the sea, and Maralah, and reached to Dabbasheth, and reached to the river that is before Jokneam;"
+        },
+        {
+            "id": 12,
+            "verse": "And turned from Sarid eastward toward the sunrising unto the border of Chislothtabor, and then goes out to Daberath, and goes up to Japhia,"
+        },
+        {
+            "id": 13,
+            "verse": "And from thence passes on along on the east to Gittahhepher, to Ittahkazin, and goes out to Remmonmethoar to Neah;"
+        },
+        {
+            "id": 14,
+            "verse": "And the border compasses it on the north side to Hannathon: and the utmost limit thereof are in the valley of Jiphthahel:"
+        },
+        {
+            "id": 15,
+            "verse": "And Kattath, and Nahallal, and Shimron, and Idalah, and Bethlehem: twelve cities with their villages."
+        },
+        {
+            "id": 16,
+            "verse": "This is the inheritance of the children of Zebulun according to their families, these cities with their villages."
+        },
+        {
+            "id": 17,
+            "verse": "And the fourth lot came out to Issachar, for the children of Issachar according to their families."
+        },
+        {
+            "id": 18,
+            "verse": "And their border was toward Jezreel, and Chesulloth, and Shunem,"
+        },
+        {
+            "id": 19,
+            "verse": "And Haphraim, and Shihon, and Anaharath,"
+        },
+        {
+            "id": 20,
+            "verse": "And Rabbith, and Kishion, and Abez,"
+        },
+        {
+            "id": 21,
+            "verse": "And Remeth, and Engannim, and Enhaddah, and Bethpazzez;"
+        },
+        {
+            "id": 22,
+            "verse": "And the coast reachs to Tabor, and Shahazimah, and Bethshemesh; and the utmost limit of their border were at Jordan: sixteen cities with their villages."
+        },
+        {
+            "id": 23,
+            "verse": "This is the inheritance of the tribe of the children of Issachar according to their families, the cities and their villages."
+        },
+        {
+            "id": 24,
+            "verse": "And the fifth lot came out for the tribe of the children of Asher according to their families."
+        },
+        {
+            "id": 25,
+            "verse": "And their border was Helkath, and Hali, and Beten, and Achshaph,"
+        },
+        {
+            "id": 26,
+            "verse": "And Alammelech, and Amad, and Misheal; and reachs to Carmel westward, and to Shihorlibnath;"
+        },
+        {
+            "id": 27,
+            "verse": "And turns toward the sunrising to Bethdagon, and reachs to Zebulun, and to the valley of Jiphthahel toward the north side of Bethemek, and Neiel, and goes out to Cabul on the left hand,"
+        },
+        {
+            "id": 28,
+            "verse": "And Hebron, and Rehob, and Hammon, and Kanah, even unto great Zidon;"
+        },
+        {
+            "id": 29,
+            "verse": "And then the coast turns to Ramah, and to the strong city Tyre; and the coast turns to Hosah; and the utmost limit thereof are at the sea from the coast to Achzib:"
+        },
+        {
+            "id": 30,
+            "verse": "Ummah also, and Aphek, and Rehob: twenty and two cities with their villages."
+        },
+        {
+            "id": 31,
+            "verse": "This is the inheritance of the tribe of the children of Asher according to their families, these cities with their villages."
+        },
+        {
+            "id": 32,
+            "verse": "The sixth lot came out to the children of Naphtali, even for the children of Naphtali according to their families."
+        },
+        {
+            "id": 33,
+            "verse": "And their coast was from Heleph, from Allon to Zaanannim, and Adami, Nekeb, and Jabneel, unto Lakum; and the utmost limit thereof were at Jordan:"
+        },
+        {
+            "id": 34,
+            "verse": "And then the coast turns westward to Aznothtabor, and goes out from thence to Hukkok, and reachs to Zebulun on the south side, and reachs to Asher on the west side, and to Judah upon Jordan toward the sunrising."
+        },
+        {
+            "id": 35,
+            "verse": "And the fenced cities are Ziddim, Zer, and Hammath, Rakkath, and Chinnereth,"
+        },
+        {
+            "id": 36,
+            "verse": "And Adamah, and Ramah, and Hazor,"
+        },
+        {
+            "id": 37,
+            "verse": "And Kedesh, and Edrei, and Enhazor,"
+        },
+        {
+            "id": 38,
+            "verse": "And Iron, and Migdalel, Horem, and Bethanath, and Bethshemesh; nineteen cities with their villages."
+        },
+        {
+            "id": 39,
+            "verse": "This is the inheritance of the tribe of the children of Naphtali according to their families, the cities and their villages."
+        },
+        {
+            "id": 40,
+            "verse": "And the seventh lot came out for the tribe of the children of Dan according to their families."
+        },
+        {
+            "id": 41,
+            "verse": "And the coast of their inheritance was Zorah, and Eshtaol, and Irshemesh,"
+        },
+        {
+            "id": 42,
+            "verse": "And Shaalabbin, and Ajalon, and Jethlah,"
+        },
+        {
+            "id": 43,
+            "verse": "And Elon, and Thimnathah, and Ekron,"
+        },
+        {
+            "id": 44,
+            "verse": "And Eltekeh, and Gibbethon, and Baalath,"
+        },
+        {
+            "id": 45,
+            "verse": "And Jehud, and Beneberak, and Gathrimmon,"
+        },
+        {
+            "id": 46,
+            "verse": "And Mejarkon, and Rakkon, with the border before Japho."
+        },
+        {
+            "id": 47,
+            "verse": "And the coast of the children of Dan went out too little for them: therefore the children of Dan went up to fight against Leshem, and took it, and stroke it with the edge of the sword, and possessed it, and dwelt therein, and called Leshem, Dan, after the name of Dan their father."
+        },
+        {
+            "id": 48,
+            "verse": "This is the inheritance of the tribe of the children of Dan according to their families, these cities with their villages."
+        },
+        {
+            "id": 49,
+            "verse": "When they had made an end of dividing the land for inheritance by their coasts, the children of Israel gave an inheritance to Joshua the son of Nun among them:"
+        },
+        {
+            "id": 50,
+            "verse": "According to the word of the LORD they gave him the city which he asked, even Timnathserah in mount Ephraim: and he built the city, and dwelt therein."
+        },
+        {
+            "id": 51,
+            "verse": "These are the inheritances, which Eleazar the priest, and Joshua the son of Nun, and the heads of the fathers of the tribes of the children of Israel, divided for an inheritance by lot in Shiloh before the LORD, at the door of the tabernacle of the congregation. So they made an end of dividing the country."
+        }
+    ]
+}

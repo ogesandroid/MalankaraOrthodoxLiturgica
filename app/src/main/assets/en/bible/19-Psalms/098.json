@@ -1,0 +1,42 @@
+{
+    "book": "Psalms",
+    "chapter": 98,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "O sing unto the LORD a new song; for he has done marvellous things: his right hand, and his holy arm, has got him the victory."
+        },
+        {
+            "id": 2,
+            "verse": "The LORD has made known his salvation: his righteousness has he openly showed in the sight of the heathen."
+        },
+        {
+            "id": 3,
+            "verse": "He has remembered his mercy and his truth toward the house of Israel: all the ends of the earth have seen the salvation of our God."
+        },
+        {
+            "id": 4,
+            "verse": "Make a joyful noise unto the LORD, all the earth: make a loud noise, and rejoice, and sing praise."
+        },
+        {
+            "id": 5,
+            "verse": "Sing unto the LORD with the harp; with the harp, and the voice of a psalm."
+        },
+        {
+            "id": 6,
+            "verse": "With trumpets and sound of cornet make a joyful noise before the LORD, the King."
+        },
+        {
+            "id": 7,
+            "verse": "Let the sea roar, and the fullness thereof; the world, and they that dwell therein."
+        },
+        {
+            "id": 8,
+            "verse": "Let the floods clap their hands: let the hills be joyful together"
+        },
+        {
+            "id": 9,
+            "verse": "Before the LORD; for he comes to judge the earth: with righteousness shall he judge the world, and the people with equity."
+        }
+    ]
+}

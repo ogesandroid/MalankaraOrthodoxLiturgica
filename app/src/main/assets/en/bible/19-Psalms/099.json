@@ -1,0 +1,42 @@
+{
+    "book": "Psalms",
+    "chapter": 99,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "The LORD reigns; let the people tremble: he sits between the cherubims; let the earth be moved."
+        },
+        {
+            "id": 2,
+            "verse": "The LORD is great in Zion; and he is high above all the people."
+        },
+        {
+            "id": 3,
+            "verse": "Let them praise your great and terrible name; for it is holy."
+        },
+        {
+            "id": 4,
+            "verse": "The king's strength also loves judgment; you do establish equity, you execute judgment and righteousness in Jacob."
+        },
+        {
+            "id": 5,
+            "verse": "Exalt all of you the LORD our God, and worship at his footstool; for he is holy."
+        },
+        {
+            "id": 6,
+            "verse": "Moses and Aaron among his priests, and Samuel among them that call upon his name; they called upon the LORD, and he answered them."
+        },
+        {
+            "id": 7,
+            "verse": "He spoke unto them in the cloudy pillar: they kept his testimonies, and the ordinance that he gave them."
+        },
+        {
+            "id": 8,
+            "verse": "You answered them, O LORD our God: you were a God that forgave them, though you took vengeance of their inventions."
+        },
+        {
+            "id": 9,
+            "verse": "Exalt the LORD our God, and worship at his holy hill; for the LORD our God is holy."
+        }
+    ]
+}

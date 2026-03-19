@@ -1,0 +1,362 @@
+{
+    "book": "Numbers",
+    "chapter": 7,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "And it came to pass on the day that Moses had fully set up the tabernacle, and had anointed it, and sanctified it, and all the instruments thereof, both the altar and all the vessels thereof, and had anointed them, and sanctified them;"
+        },
+        {
+            "id": 2,
+            "verse": "That the princes of Israel, heads of the house of their fathers, who were the princes of the tribes, and were over them that were numbered, offered:"
+        },
+        {
+            "id": 3,
+            "verse": "And they brought their offering before the LORD, six covered wagons, and twelve oxen; a wagon for two of the princes, and for each one an ox: and they brought them before the tabernacle."
+        },
+        {
+            "id": 4,
+            "verse": "And the LORD spoke unto Moses, saying,"
+        },
+        {
+            "id": 5,
+            "verse": "Take it of them, that they may be to do the service of the tabernacle of the congregation; and you shall give them unto the Levites, to every man according to his service."
+        },
+        {
+            "id": 6,
+            "verse": "And Moses took the wagons and the oxen, and gave them unto the Levites."
+        },
+        {
+            "id": 7,
+            "verse": "Two wagons and four oxen he gave unto the sons of Gershon, according to their service:"
+        },
+        {
+            "id": 8,
+            "verse": "And four wagons and eight oxen he gave unto the sons of Merari, according unto their service, under the hand of Ithamar the son of Aaron the priest."
+        },
+        {
+            "id": 9,
+            "verse": "But unto the sons of Kohath he gave none: because the service of the sanctuary belonging unto them was that they should bear upon their shoulders."
+        },
+        {
+            "id": 10,
+            "verse": "And the princes offered for dedicating of the altar in the day that it was anointed, even the princes offered their offering before the altar."
+        },
+        {
+            "id": 11,
+            "verse": "And the LORD said unto Moses, They shall offer their offering, each prince on his day, for the dedicating of the altar."
+        },
+        {
+            "id": 12,
+            "verse": "And he that offered his offering the first day was Nahshon the son of Amminadab, of the tribe of Judah:"
+        },
+        {
+            "id": 13,
+            "verse": "And his offering was one silver charger, the weight thereof was an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them were full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 14,
+            "verse": "One spoon of ten shekels of gold, full of incense:"
+        },
+        {
+            "id": 15,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 16,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 17,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Nahshon the son of Amminadab."
+        },
+        {
+            "id": 18,
+            "verse": "On the second day Nethaneel the son of Zuar, prince of Issachar, did offer:"
+        },
+        {
+            "id": 19,
+            "verse": "He offered for his offering one silver charger, the weight whereof was an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 20,
+            "verse": "One spoon of gold of ten shekels, full of incense:"
+        },
+        {
+            "id": 21,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 22,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 23,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Nethaneel the son of Zuar."
+        },
+        {
+            "id": 24,
+            "verse": "On the third day Eliab the son of Helon, prince of the children of Zebulun, did offer:"
+        },
+        {
+            "id": 25,
+            "verse": "His offering was one silver charger, the weight whereof was an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 26,
+            "verse": "One golden spoon of ten shekels, full of incense:"
+        },
+        {
+            "id": 27,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 28,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 29,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Eliab the son of Helon."
+        },
+        {
+            "id": 30,
+            "verse": "On the fourth day Elizur the son of Shedeur, prince of the children of Reuben, did offer:"
+        },
+        {
+            "id": 31,
+            "verse": "His offering was one silver charger of the weight of an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 32,
+            "verse": "One golden spoon of ten shekels, full of incense:"
+        },
+        {
+            "id": 33,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 34,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 35,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Elizur the son of Shedeur."
+        },
+        {
+            "id": 36,
+            "verse": "On the fifth day Shelumiel the son of Zurishaddai, prince of the children of Simeon, did offer:"
+        },
+        {
+            "id": 37,
+            "verse": "His offering was one silver charger, the weight whereof was an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 38,
+            "verse": "One golden spoon of ten shekels, full of incense:"
+        },
+        {
+            "id": 39,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 40,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 41,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Shelumiel the son of Zurishaddai."
+        },
+        {
+            "id": 42,
+            "verse": "On the sixth day Eliasaph the son of Deuel, prince of the children of Gad, offered:"
+        },
+        {
+            "id": 43,
+            "verse": "His offering was one silver charger of the weight of an hundred and thirty shekels, a silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 44,
+            "verse": "One golden spoon of ten shekels, full of incense:"
+        },
+        {
+            "id": 45,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 46,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 47,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Eliasaph the son of Deuel."
+        },
+        {
+            "id": 48,
+            "verse": "On the seventh day Elishama the son of Ammihud, prince of the children of Ephraim, offered:"
+        },
+        {
+            "id": 49,
+            "verse": "His offering was one silver charger, the weight whereof was an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 50,
+            "verse": "One golden spoon of ten shekels, full of incense:"
+        },
+        {
+            "id": 51,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 52,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 53,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Elishama the son of Ammihud."
+        },
+        {
+            "id": 54,
+            "verse": "On the eighth day offered Gamaliel the son of Pedahzur, prince of the children of Manasseh:"
+        },
+        {
+            "id": 55,
+            "verse": "His offering was one silver charger of the weight of an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 56,
+            "verse": "One golden spoon of ten shekels, full of incense:"
+        },
+        {
+            "id": 57,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 58,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 59,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Gamaliel the son of Pedahzur."
+        },
+        {
+            "id": 60,
+            "verse": "On the ninth day Abidan the son of Gideoni, prince of the children of Benjamin, offered:"
+        },
+        {
+            "id": 61,
+            "verse": "His offering was one silver charger, the weight whereof was an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 62,
+            "verse": "One golden spoon of ten shekels, full of incense:"
+        },
+        {
+            "id": 63,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 64,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 65,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Abidan the son of Gideoni."
+        },
+        {
+            "id": 66,
+            "verse": "On the tenth day Ahiezer the son of Ammishaddai, prince of the children of Dan, offered:"
+        },
+        {
+            "id": 67,
+            "verse": "His offering was one silver charger, the weight whereof was an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 68,
+            "verse": "One golden spoon of ten shekels, full of incense:"
+        },
+        {
+            "id": 69,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 70,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 71,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Ahiezer the son of Ammishaddai."
+        },
+        {
+            "id": 72,
+            "verse": "On the eleventh day Pagiel the son of Ocran, prince of the children of Asher, offered:"
+        },
+        {
+            "id": 73,
+            "verse": "His offering was one silver charger, the weight whereof was an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 74,
+            "verse": "One golden spoon of ten shekels, full of incense:"
+        },
+        {
+            "id": 75,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 76,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 77,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Pagiel the son of Ocran."
+        },
+        {
+            "id": 78,
+            "verse": "On the twelfth day Ahira the son of Enan, prince of the children of Naphtali, offered:"
+        },
+        {
+            "id": 79,
+            "verse": "His offering was one silver charger, the weight whereof was an hundred and thirty shekels, one silver bowl of seventy shekels, after the shekel of the sanctuary; both of them full of fine flour mingled with oil for a food offering:"
+        },
+        {
+            "id": 80,
+            "verse": "One golden spoon of ten shekels, full of incense:"
+        },
+        {
+            "id": 81,
+            "verse": "One young bullock, one ram, one lamb of the first year, for a burnt offering:"
+        },
+        {
+            "id": 82,
+            "verse": "One kid of the goats for a sin offering:"
+        },
+        {
+            "id": 83,
+            "verse": "And for a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year: this was the offering of Ahira the son of Enan."
+        },
+        {
+            "id": 84,
+            "verse": "This was the dedication of the altar, in the day when it was anointed, by the princes of Israel: twelve chargers of silver, twelve silver bowls, twelve spoons of gold:"
+        },
+        {
+            "id": 85,
+            "verse": "Each charger of silver weighing an hundred and thirty shekels, each bowl seventy: all the silver vessels weighed two thousand and four hundred shekels, after the shekel of the sanctuary:"
+        },
+        {
+            "id": 86,
+            "verse": "The golden spoons were twelve, full of incense, weighing ten shekels apiece, after the shekel of the sanctuary: all the gold of the spoons was an hundred and twenty shekels."
+        },
+        {
+            "id": 87,
+            "verse": "All the oxen for the burnt offering were twelve bullocks, the rams twelve, the lambs of the first year twelve, with their food offering: and the kids of the goats for sin offering twelve."
+        },
+        {
+            "id": 88,
+            "verse": "And all the oxen for the sacrifice of the peace offerings were twenty and four bullocks, the rams sixty, the he goats sixty, the lambs of the first year sixty. This was the dedication of the altar, after that it was anointed."
+        },
+        {
+            "id": 89,
+            "verse": "And when Moses was gone into the tabernacle of the congregation to speak with him, then he heard the voice of one speaking unto him from off the mercy seat that was upon the ark of testimony, from between the two cherubims: and he spoke unto him."
+        }
+    ]
+}

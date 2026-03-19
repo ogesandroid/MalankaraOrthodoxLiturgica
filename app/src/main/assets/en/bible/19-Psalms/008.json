@@ -1,0 +1,42 @@
+{
+    "book": "Psalms",
+    "chapter": 8,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "O LORD, our Lord, how excellent is your name in all the earth! who have set your glory above the heavens."
+        },
+        {
+            "id": 2,
+            "verse": "Out of the mouth of babes and infants have you ordained strength because of yours enemies, that you might still the enemy and the avenger."
+        },
+        {
+            "id": 3,
+            "verse": "When I consider your heavens, the work of your fingers, the moon and the stars, which you have ordained;"
+        },
+        {
+            "id": 4,
+            "verse": "What is man, that you are mindful of him? and the son of man, that you visit him?"
+        },
+        {
+            "id": 5,
+            "verse": "For you have made him a little lower than the angels, and have crowned him with glory and honour."
+        },
+        {
+            "id": 6,
+            "verse": "You made him to have dominion over the works of your hands; you have put all things under his feet:"
+        },
+        {
+            "id": 7,
+            "verse": "All sheep and oxen, yea, and the beasts of the field;"
+        },
+        {
+            "id": 8,
+            "verse": "The fowl of the air, and the fish of the sea, and whatsoever passes through the paths of the seas."
+        },
+        {
+            "id": 9,
+            "verse": "O LORD our Lord, how excellent is your name in all the earth!"
+        }
+    ]
+}

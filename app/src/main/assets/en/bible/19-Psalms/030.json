@@ -1,0 +1,54 @@
+{
+    "book": "Psalms",
+    "chapter": 30,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "I will extol you, O LORD; for you have lifted me up, and have not made my foes to rejoice over me."
+        },
+        {
+            "id": 2,
+            "verse": "O LORD my God, I cried unto you, and you have healed me."
+        },
+        {
+            "id": 3,
+            "verse": "O LORD, you have brought up my soul from the grave: you have kept me alive, that I should not go down to the pit."
+        },
+        {
+            "id": 4,
+            "verse": "Sing unto the LORD, O all of you saints of his, and give thanks at the remembrance of his holiness."
+        },
+        {
+            "id": 5,
+            "verse": "For his anger endures but a moment; in his favour is life: weeping may endure for a night, but joy comes in the morning."
+        },
+        {
+            "id": 6,
+            "verse": "And in my prosperity I said, I shall never be moved."
+        },
+        {
+            "id": 7,
+            "verse": "LORD, by your favour you have made my mountain to stand strong: you did hide your face, and I was troubled."
+        },
+        {
+            "id": 8,
+            "verse": "I cried to you, O LORD; and unto the LORD I made supplication."
+        },
+        {
+            "id": 9,
+            "verse": "What profit is there in my blood, when I go down to the pit? Shall the dust praise you? shall it declare your truth?"
+        },
+        {
+            "id": 10,
+            "verse": "Hear, O LORD, and have mercy upon me: LORD, be you my helper."
+        },
+        {
+            "id": 11,
+            "verse": "You have turned for me my mourning into dancing: you have put off my sackcloth, and girded me with gladness;"
+        },
+        {
+            "id": 12,
+            "verse": "To the end that my glory may sing praise to you, and not be silent. O LORD my God, I will give thanks unto you for ever."
+        }
+    ]
+}

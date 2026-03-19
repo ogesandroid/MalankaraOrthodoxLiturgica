@@ -1,0 +1,58 @@
+{
+    "book": "Psalms",
+    "chapter": 85,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "Lord, you have been favourable unto your land: you have brought back the captivity of Jacob."
+        },
+        {
+            "id": 2,
+            "verse": "You have forgiven the iniquity of your people, you have covered all their sin. Selah."
+        },
+        {
+            "id": 3,
+            "verse": "You have taken away all your wrath: you have turned yourself from the fierceness of yours anger."
+        },
+        {
+            "id": 4,
+            "verse": "Turn us, O God of our salvation, and cause yours anger toward us to cease."
+        },
+        {
+            "id": 5,
+            "verse": "Will you be angry with us for ever? will you draw out yours anger to all generations?"
+        },
+        {
+            "id": 6,
+            "verse": "Will you not revive us again: that your people may rejoice in you?"
+        },
+        {
+            "id": 7,
+            "verse": "Show us your mercy, O LORD, and grant us your salvation."
+        },
+        {
+            "id": 8,
+            "verse": "I will hear what God the LORD will speak: for he will speak peace unto his people, and to his saints: but let them not return to folly."
+        },
+        {
+            "id": 9,
+            "verse": "Surely his salvation is nigh them that fear him; that glory may dwell in our land."
+        },
+        {
+            "id": 10,
+            "verse": "Mercy and truth are met together; righteousness and peace have kissed each other."
+        },
+        {
+            "id": 11,
+            "verse": "Truth shall spring out of the earth; and righteousness shall look down from heaven."
+        },
+        {
+            "id": 12,
+            "verse": "Yea, the LORD shall give that which is good; and our land shall yield her increase."
+        },
+        {
+            "id": 13,
+            "verse": "Righteousness shall go before him; and shall set us in the way of his steps."
+        }
+    ]
+}

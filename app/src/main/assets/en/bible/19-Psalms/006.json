@@ -1,0 +1,46 @@
+{
+    "book": "Psalms",
+    "chapter": 6,
+    "verses": [
+        {
+            "id": 1,
+            "verse": "O LORD, rebuke me not in yours anger, neither chasten me in your hot displeasure."
+        },
+        {
+            "id": 2,
+            "verse": "Have mercy upon me, O LORD; for I am weak: O LORD, heal me; for my bones are vexed."
+        },
+        {
+            "id": 3,
+            "verse": "My soul is also sore vexed: but you, O LORD, how long?"
+        },
+        {
+            "id": 4,
+            "verse": "Return, O LORD, deliver my soul: oh save me for your mercies' sake."
+        },
+        {
+            "id": 5,
+            "verse": "For in death there is no remembrance of you: in the grave who shall give you thanks?"
+        },
+        {
+            "id": 6,
+            "verse": "I am weary with my groaning; all the night make I my bed to swim; I water my couch with my tears."
+        },
+        {
+            "id": 7,
+            "verse": "Mine eye is consumed because of grief; it waxs old because of all mine enemies."
+        },
+        {
+            "id": 8,
+            "verse": "Depart from me, all you workers of iniquity; for the LORD has heard the voice of my weeping."
+        },
+        {
+            "id": 9,
+            "verse": "The LORD has heard my supplication; the LORD will receive my prayer."
+        },
+        {
+            "id": 10,
+            "verse": "Let all mine enemies be ashamed and sore vexed: let them return and be ashamed suddenly."
+        }
+    ]
+}
