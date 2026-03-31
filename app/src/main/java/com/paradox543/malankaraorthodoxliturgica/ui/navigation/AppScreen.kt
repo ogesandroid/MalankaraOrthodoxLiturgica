@@ -25,6 +25,12 @@ sealed class AppScreen(
     object Locations : AppScreen("locations", "app://liturgica/locations")
 
     object Video : AppScreen("video", "app://liturgica/video")
+    object Dioceses : AppScreen("Dioceses info", "app://liturgica/Dioceses info")
+
+    //Hierarchy
+    //Institutions info
+    //Church’s info
+    //Counselling Requests
 
     object Section : AppScreen("section/{route}") {
         const val ARG_ROUTE = "route"

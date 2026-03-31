@@ -83,6 +83,7 @@ fun SectionScreen(
     for (item in node.route.split("_")) {
         title += (translations[item] ?: item) + " "
     }
+    Log.e("hjdgsfds", menus.toString())
 
     val activity = LocalContext.current as? Activity
 
@@ -461,6 +462,9 @@ fun MenuListCard(navController: NavController, menuName: String, icon: String) {
                         }
                         "Songs" -> {
                             navController.navigate(AppScreen.Song)
+                        }
+                        "Dioceses info" -> {
+                            navController.navigate(AppScreen.Dioceses.route)
                         }
                     }
                 },

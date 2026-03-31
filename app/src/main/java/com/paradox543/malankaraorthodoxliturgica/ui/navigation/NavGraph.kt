@@ -20,6 +20,7 @@ import com.paradox543.malankaraorthodoxliturgica.ui.screens.BibleReadingScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.BibleScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.CalendarScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.ContentNotReadyScreen
+import com.paradox543.malankaraorthodoxliturgica.ui.screens.DioceseListScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.HomeScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.LocationsScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.OnboardingScreen
@@ -32,6 +33,7 @@ import com.paradox543.malankaraorthodoxliturgica.ui.screens.SongScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.VideosScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.BibleViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.CalendarViewModel
+import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.DiocesesViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.PrayerNavViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.PrayerViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.SettingsViewModel
@@ -311,6 +313,10 @@ fun NavGraph(
 
         composable(AppScreen.Video.route) { backStackEntry ->
             VideosScreen(navController, "")
+        }
+        composable(AppScreen.Dioceses.route) { backStackEntry ->
+            val diocesesViewModel: DiocesesViewModel = hiltViewModel(backStackEntry)
+            DioceseListScreen(navController, diocesesViewModel)
         }
 
         composable(

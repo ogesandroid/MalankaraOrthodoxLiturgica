@@ -1,6 +1,6 @@
 package com.paradox543.malankaraorthodoxliturgica.data.calendar.remote
 
-import android.util.Log
+import com.paradox543.malankaraorthodoxliturgica.domain.dioceses.model.DiocesesListModel
 import com.paradox543.malankaraorthodoxliturgica.domain.home.model.HomeMenusModel
 import com.paradox543.malankaraorthodoxliturgica.domain.settings.model.AppLanguage
 import io.ktor.client.call.body
@@ -19,5 +19,10 @@ object AppService {
                 put("deviceType", Const.DEVICE_TYPE)
                 put("device_apk_version", "1.1")
             })
+        }.body()
+
+
+    suspend fun getDiocesesList(): DiocesesListModel =
+        client.post("dioceses-info") {
         }.body()
 }
