@@ -456,17 +456,37 @@ fun MenuListCard(navController: NavController, menuName: String, icon: String) {
                         "Calendar" -> {
                             navController.navigate(AppScreen.Calendar.route)
                         }
+
                         "Bible" -> {
                             navController.navigate(AppScreen.Bible.route)
                         }
+
                         "Videos" -> {
                             navController.navigate(AppScreen.Video.route)
                         }
+
                         "Songs" -> {
                             navController.navigate(AppScreen.Song)
                         }
+
                         "Dioceses info" -> {
                             navController.navigate(AppScreen.Dioceses.route)
+                        }
+
+                        "Hierarchy" -> {
+                            navController.navigate(AppScreen.Hierarchy.route)
+                        }
+
+                        "Institutions info" -> {
+                            navController.navigate(AppScreen.Institutions.route)
+                        }
+
+                        "Church’s info" -> {
+                            navController.navigate(AppScreen.Church.route)
+                        }
+
+                        "Counselling Requests" -> {
+                            navController.navigate(AppScreen.Counselling.route)
                         }
                     }
                 },

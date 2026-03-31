@@ -19,9 +19,13 @@ import com.paradox543.malankaraorthodoxliturgica.ui.screens.BibleChapterScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.BibleReadingScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.BibleScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.CalendarScreen
+import com.paradox543.malankaraorthodoxliturgica.ui.screens.ChurchScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.ContentNotReadyScreen
+import com.paradox543.malankaraorthodoxliturgica.ui.screens.CounsellingScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.DioceseListScreen
+import com.paradox543.malankaraorthodoxliturgica.ui.screens.HierarchyScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.HomeScreen
+import com.paradox543.malankaraorthodoxliturgica.ui.screens.InstitutionsScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.LocationsScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.OnboardingScreen
 import com.paradox543.malankaraorthodoxliturgica.ui.screens.PrayNowScreen
@@ -317,6 +321,18 @@ fun NavGraph(
         composable(AppScreen.Dioceses.route) { backStackEntry ->
             val diocesesViewModel: DiocesesViewModel = hiltViewModel(backStackEntry)
             DioceseListScreen(navController, diocesesViewModel)
+        }
+        composable(AppScreen.Hierarchy.route) {
+            HierarchyScreen(navController)
+        }
+        composable(AppScreen.Institutions.route) {
+            InstitutionsScreen(navController)
+        }
+        composable(AppScreen.Church.route) {
+            ChurchScreen(navController)
+        }
+        composable(AppScreen.Counselling.route) {
+            CounsellingScreen(navController)
         }
 
         composable(

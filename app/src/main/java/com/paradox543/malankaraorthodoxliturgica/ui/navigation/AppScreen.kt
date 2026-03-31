@@ -26,11 +26,10 @@ sealed class AppScreen(
 
     object Video : AppScreen("video", "app://liturgica/video")
     object Dioceses : AppScreen("Dioceses info", "app://liturgica/Dioceses info")
-
-    //Hierarchy
-    //Institutions info
-    //Church’s info
-    //Counselling Requests
+    object Hierarchy : AppScreen("Hierarchy", "app://liturgica/Hierarchy")
+    object Institutions : AppScreen("Institutions info", "app://liturgica/Institutions info")
+    object Church : AppScreen("Church’s info", "app://liturgica/Church’s info")
+    object Counselling : AppScreen("Counselling Requests", "app://liturgica/Counselling Requests")
 
     object Section : AppScreen("section/{route}") {
         const val ARG_ROUTE = "route"
@@ -41,7 +40,7 @@ sealed class AppScreen(
         fun createDeepLink(sectionRoute: String) = "app://liturgica/section/$sectionRoute"
     }
 
-    object SectionList: AppScreen("sectionList/{route}") {
+    object SectionList : AppScreen("sectionList/{route}") {
         const val ARG_ROUTE = "route"
         const val DEEP_LINK_PATTERN = "app://liturgica/sectionList/{$ARG_ROUTE}"
         fun createRoute(sectionListRoute: String) = "sectionList/$sectionListRoute"
