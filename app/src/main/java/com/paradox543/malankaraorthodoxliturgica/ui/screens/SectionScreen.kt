@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -42,6 +43,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -443,12 +445,12 @@ private fun SectionCard(
 @Composable
 fun MenuListCard(navController: NavController, menuName: String, icon: String) {
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.width(72.dp)  // ← constrain the whole item width
     ) {
         Card(
             modifier = Modifier
-                .width(62.dp)
-                .height(62.dp)
+                .size(62.dp)
                 .clickable {
                     when (menuName) {
                         "Calendar" -> {
@@ -480,9 +482,7 @@ fun MenuListCard(navController: NavController, menuName: String, icon: String) {
                 AsyncImage(
                     model = icon,
                     contentDescription = "Menu Icon",
-                    modifier = Modifier
-                        .width(38.dp)
-                        .height(38.dp)
+                    modifier = Modifier.size(38.dp)
                 )
             }
         }
@@ -490,7 +490,9 @@ fun MenuListCard(navController: NavController, menuName: String, icon: String) {
             text = menuName,
             color = if (isSystemInDarkTheme()) Color.White else Color(0xFFD1422B),
             style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.padding(top = 6.dp, start = 5.dp, end = 5.dp, bottom = 0.dp)
+            textAlign = TextAlign.Center,   // ← center multi-word labels
+            maxLines = 2,                   // ← wrap instead of overflow
+            modifier = Modifier.padding(top = 6.dp)
         )
     }
 }
