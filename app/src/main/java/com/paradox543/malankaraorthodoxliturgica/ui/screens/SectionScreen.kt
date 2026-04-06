@@ -509,9 +509,9 @@ fun MenuListCard(navController: NavController, menuName: String, icon: String) {
         Text(
             text = menuName,
             color = if (isSystemInDarkTheme()) Color.White else Color(0xFFD1422B),
-            style = MaterialTheme.typography.bodyMedium,
-            textAlign = TextAlign.Center,   // ← center multi-word labels
-            maxLines = 2,                   // ← wrap instead of overflow
+            style = MaterialTheme.typography.bodySmall,
+            textAlign = TextAlign.Center,
+            maxLines = 2,
             modifier = Modifier.padding(top = 6.dp)
         )
     }

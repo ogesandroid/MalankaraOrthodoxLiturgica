@@ -1,5 +1,6 @@
 package com.paradox543.malankaraorthodoxliturgica.data.calendar.remote
 
+import com.paradox543.malankaraorthodoxliturgica.domain.church.model.ChurchListModel
 import com.paradox543.malankaraorthodoxliturgica.domain.dioceses.model.DiocesesListModel
 import com.paradox543.malankaraorthodoxliturgica.domain.home.model.HomeMenusModel
 import com.paradox543.malankaraorthodoxliturgica.domain.settings.model.AppLanguage
@@ -24,5 +25,9 @@ object AppService {
 
     suspend fun getDiocesesList(): DiocesesListModel =
         client.post("dioceses-info") {
+        }.body()
+
+    suspend fun getChurchInfo(): ChurchListModel =
+        client.post("church-info") {
         }.body()
 }

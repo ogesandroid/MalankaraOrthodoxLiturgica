@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -15,6 +16,8 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,16 +31,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.paradox543.malankaraorthodoxliturgica.domain.church.model.ChurchListModel
 import com.paradox543.malankaraorthodoxliturgica.ui.components.TopNavBar
+import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.ChurchViewModel
 
 @Composable
 fun ChurchScreen(
-    navController: NavController
+    navController: NavController,
+    churchViewModel: ChurchViewModel
 ) {
-
-    val isLoading = false
+    val churchData by churchViewModel.churchData.collectAsState()
+    val isLoading by churchViewModel.isLoading.collectAsState()
     Scaffold(
-        topBar = { TopNavBar("Dioceses", navController) }) { innerPadding ->
+        topBar = { TopNavBar("Church Info", navController) }) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -55,9 +61,9 @@ fun ChurchScreen(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = innerPadding
                 ) {
-                    /*items(diocesesData) { data ->
-                        PlaceCard(data)
-                    }*/
+                    items(churchData) { data ->
+                        ChurchCard(data)
+                    }
                 }
             }
         }
@@ -65,7 +71,7 @@ fun ChurchScreen(
 }
 
 @Composable
-fun ChurchCard() {
+fun ChurchCard(data: ChurchListModel.Data) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -76,7 +82,7 @@ fun ChurchCard() {
     ) {
         Column {
             AsyncImage(
-                model = "",
+                model = data.image,
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -91,7 +97,7 @@ fun ChurchCard() {
             ) {
 
                 Text(
-                    text = "",
+                    text = data.name,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,
@@ -100,7 +106,7 @@ fun ChurchCard() {
                 Text(
                     text = buildAnnotatedString {
                         append(
-                            "description".take(100) + "... "
+                            data.description.take(100) + "... "
                         )
                         withStyle(
                             style = SpanStyle(
