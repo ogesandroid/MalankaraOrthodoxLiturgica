@@ -45,3 +45,5 @@ val OnBackgroundDark = Color(0xFFEAEAEA)     // Light text for contrast
 val CardBorderColor = Color(0xFFDFDFDF)
 
 val HintColor = Color(0xFFBDBDBD)
+
+val LightBlue = Color(0xFF0077FF)

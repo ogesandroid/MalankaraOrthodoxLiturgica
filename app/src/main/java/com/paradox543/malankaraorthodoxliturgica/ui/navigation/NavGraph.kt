@@ -39,6 +39,7 @@ import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.BibleViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.CalendarViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.ChurchViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.DiocesesViewModel
+import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.HierarchyViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.InstitutionViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.PrayerNavViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.PrayerViewModel
@@ -324,8 +325,9 @@ fun NavGraph(
             val diocesesViewModel: DiocesesViewModel = hiltViewModel(backStackEntry)
             DioceseListScreen(navController, diocesesViewModel)
         }
-        composable(AppScreen.Hierarchy.route) {
-            HierarchyScreen(navController)
+        composable(AppScreen.Hierarchy.route) { backStackEntry ->
+            val hierarchyViewModel: HierarchyViewModel = hiltViewModel(backStackEntry)
+            HierarchyScreen(navController, hierarchyViewModel)
         }
         composable(AppScreen.Institutions.route) { backStackEntry ->
             val institutionViewModel: InstitutionViewModel = hiltViewModel(backStackEntry)

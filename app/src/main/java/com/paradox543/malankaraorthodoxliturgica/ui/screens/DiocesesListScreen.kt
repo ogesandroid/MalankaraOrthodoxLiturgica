@@ -45,11 +45,6 @@ fun DioceseListScreen(
 
     Scaffold(
         topBar = { TopNavBar("Dioceses Info", navController) }) { innerPadding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-        ) { }
         if (isLoading) {
             Box(
                 modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
