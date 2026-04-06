@@ -1,18 +1,7 @@
 package com.paradox543.malankaraorthodoxliturgica.ui.screens
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.util.Log
-import android.view.View
-import android.webkit.CookieManager
-import android.webkit.WebChromeClient
-import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import androidx.activity.compose.BackHandler
-import androidx.annotation.OptIn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -20,7 +9,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -32,23 +20,18 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -58,60 +41,28 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
-import androidx.compose.ui.zIndex
 import androidx.core.net.toUri
-import androidx.media3.common.MediaItem
-import androidx.media3.common.util.UnstableApi
-import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.ui.AspectRatioFrameLayout
-import androidx.media3.ui.PlayerView
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.paradox543.malankaraorthodoxliturgica.R
+import com.paradox543.malankaraorthodoxliturgica.Utility.getYoutubeThumbnail
+import com.paradox543.malankaraorthodoxliturgica.domain.video.model.VideoListingModel
 import com.paradox543.malankaraorthodoxliturgica.ui.components.TopNavBar
 import com.paradox543.malankaraorthodoxliturgica.ui.theme.Background
-
-data class VideoItem(
-    val title: String,
-    val date: String,
-    val url: String,
-    val thumbnail: String = ""
-)
+import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.VideoViewModel
 
 @Composable
 fun VideosScreen(
     navController: NavController,
-    title: String
+    videoViewModel: VideoViewModel
 ) {
-    val isLoading = false
+    val isLoading by videoViewModel.isLoading.collectAsState()
+    val videoData by videoViewModel.videoData.collectAsState()
     val context = LocalContext.current
 
-    val videoItems = listOf(
-        VideoItem(
-            "Parish Feast Celebration",
-            "Jan 24, 2025",
-            "https://www.youtube.com/watch?v=K4TOrB7at0Y",
-            "https://picsum.photos/id/1/200/300"
-        ),
-        VideoItem(
-            "Parish Feast Celebration",
-            "Jan 24, 2025",
-            "https://www.youtube.com/watch?v=K4TOrB7at0Y",
-            "https://picsum.photos/id/1/200/300"
-        ),
-        VideoItem(
-            "Parish Feast Celebration",
-            "Jan 24, 2025",
-            "https://www.youtube.com/watch?v=K4TOrB7at0Y",
-            "https://picsum.photos/id/1/200/300"
-        ),
-    )
     Box(modifier = Modifier.fillMaxSize()) {
         Scaffold(
-            topBar = { TopNavBar(title, navController) }
+            topBar = { TopNavBar("", navController) }
         ) { paddingValues ->
             Box(
                 modifier = Modifier
@@ -131,9 +82,9 @@ fun VideosScreen(
                             .fillMaxSize()
                             .padding(top = 20.dp)
                     ) {
-                        items(videoItems) { item ->
+                        items(videoData) { item ->
                             VideoListCard(item, context) {
-                                VideoDialog(context, item.url).show()
+                                VideoDialog(context, item.link).show()
                             }
                         }
                     }
@@ -145,7 +96,7 @@ fun VideosScreen(
 
 @Composable
 fun VideoListCard(
-    videoItem: VideoItem,
+    videoItem: VideoListingModel.Data,
     context: Context,
     onPlayClick: () -> Unit
 ) {
@@ -172,7 +123,7 @@ fun VideoListCard(
                     contentAlignment = Alignment.Center
                 ) {
                     AsyncImage(
-                        model = videoItem.thumbnail,
+                        model = getYoutubeThumbnail(videoItem.link),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier.fillMaxSize()
@@ -210,7 +161,7 @@ fun VideoListCard(
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.clickable {
-                            val intent = Intent(Intent.ACTION_VIEW, videoItem.url.toUri())
+                            val intent = Intent(Intent.ACTION_VIEW, videoItem.link.toUri())
                             context.startActivity(intent)
                         }
                     ) {

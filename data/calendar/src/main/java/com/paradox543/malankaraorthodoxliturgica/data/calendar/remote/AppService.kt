@@ -7,6 +7,7 @@ import com.paradox543.malankaraorthodoxliturgica.domain.heirarchy.model.Hierarch
 import com.paradox543.malankaraorthodoxliturgica.domain.home.model.HomeMenusModel
 import com.paradox543.malankaraorthodoxliturgica.domain.institution.model.InstitutionListModel
 import com.paradox543.malankaraorthodoxliturgica.domain.settings.model.AppLanguage
+import com.paradox543.malankaraorthodoxliturgica.domain.video.model.VideoListingModel
 import io.ktor.client.call.body
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
@@ -44,5 +45,9 @@ object AppService {
 
     suspend fun getCounsellingData(): CounsellingRequestsModel =
         client.post("counselling-request") {
+        }.body()
+
+    suspend fun getVideoListData(): VideoListingModel =
+        client.post("video-list") {
         }.body()
 }

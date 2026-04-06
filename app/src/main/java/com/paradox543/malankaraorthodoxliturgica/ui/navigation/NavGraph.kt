@@ -45,6 +45,7 @@ import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.InstitutionViewMod
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.PrayerNavViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.PrayerViewModel
 import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.SettingsViewModel
+import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.VideoViewModel
 
 /**
  * NavGraph wiring for the app. Each destination obtains its Hilt-backed ViewModels inside
@@ -320,7 +321,8 @@ fun NavGraph(
         }
 
         composable(AppScreen.Video.route) { backStackEntry ->
-            VideosScreen(navController, "")
+            val videoViewModel: VideoViewModel = hiltViewModel(backStackEntry)
+            VideosScreen(navController, videoViewModel)
         }
         composable(AppScreen.Dioceses.route) { backStackEntry ->
             val diocesesViewModel: DiocesesViewModel = hiltViewModel(backStackEntry)
