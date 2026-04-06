@@ -3,6 +3,7 @@ package com.paradox543.malankaraorthodoxliturgica.data.calendar.remote
 import com.paradox543.malankaraorthodoxliturgica.domain.church.model.ChurchListModel
 import com.paradox543.malankaraorthodoxliturgica.domain.dioceses.model.DiocesesListModel
 import com.paradox543.malankaraorthodoxliturgica.domain.home.model.HomeMenusModel
+import com.paradox543.malankaraorthodoxliturgica.domain.institution.model.InstitutionListModel
 import com.paradox543.malankaraorthodoxliturgica.domain.settings.model.AppLanguage
 import io.ktor.client.call.body
 import io.ktor.client.request.post
@@ -29,5 +30,9 @@ object AppService {
 
     suspend fun getChurchInfo(): ChurchListModel =
         client.post("church-info") {
+        }.body()
+
+    suspend fun getInstitutionInfo(): InstitutionListModel =
+        client.post("institution-info") {
         }.body()
 }

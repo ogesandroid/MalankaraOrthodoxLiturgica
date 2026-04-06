@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -15,6 +16,8 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,16 +31,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.paradox543.malankaraorthodoxliturgica.domain.institution.model.InstitutionListModel
 import com.paradox543.malankaraorthodoxliturgica.ui.components.TopNavBar
+import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.InstitutionViewModel
 
 @Composable
 fun InstitutionsScreen(
-    navController: NavController
+    navController: NavController,
+    institutionViewModel: InstitutionViewModel
 ) {
-    val isLoading = false
+    val isLoading by institutionViewModel.isLoading.collectAsState()
+    val institutionData by institutionViewModel.institutionData.collectAsState()
 
     Scaffold(
-        topBar = { TopNavBar("Dioceses", navController) }) { innerPadding ->
+        topBar = { TopNavBar("Institution Info", navController) }) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -55,9 +62,9 @@ fun InstitutionsScreen(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = innerPadding
                 ) {
-                    /*items("diocesesData") { data ->
-                        PlaceCard(data)
-                    }*/
+                    items(institutionData) { data ->
+                        InstitutionCard(data)
+                    }
                 }
             }
         }
@@ -65,7 +72,7 @@ fun InstitutionsScreen(
 }
 
 @Composable
-fun InstitutionCard() {
+fun InstitutionCard(data: InstitutionListModel.Data) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -76,7 +83,7 @@ fun InstitutionCard() {
     ) {
         Column {
             AsyncImage(
-                model = "",
+                model = data.image,
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -91,7 +98,7 @@ fun InstitutionCard() {
             ) {
 
                 Text(
-                    text = "",
+                    text = data.name,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,
@@ -100,7 +107,7 @@ fun InstitutionCard() {
                 Text(
                     text = buildAnnotatedString {
                         append(
-                            "description".take(100) + "... "
+                            data.description.take(100) + "... "
                         )
                         withStyle(
                             style = SpanStyle(
