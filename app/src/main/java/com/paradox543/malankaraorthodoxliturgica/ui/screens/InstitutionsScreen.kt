@@ -1,5 +1,6 @@
 package com.paradox543.malankaraorthodoxliturgica.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,19 +43,18 @@ fun InstitutionsScreen(
 ) {
     val isLoading by institutionViewModel.isLoading.collectAsState()
     val institutionData by institutionViewModel.institutionData.collectAsState()
-
     Scaffold(
         topBar = { TopNavBar("Institution Info", navController) }) { innerPadding ->
         Box(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(innerPadding)
         ) { }
         if (isLoading) {
             Box(
-                modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center
+                modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
             ) {
-                CircularProgressIndicator()
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
         } else {
             Column {
@@ -78,8 +78,8 @@ fun InstitutionCard(data: InstitutionListModel.Data) {
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp),
         shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(0.dp),
-        colors = CardDefaults.cardColors(contentColor = Color.White)
+        elevation = CardDefaults.cardElevation(1.dp),
+        colors = CardDefaults.cardColors(contentColor = Color.Black, containerColor = Color.White)
     ) {
         Column {
             AsyncImage(

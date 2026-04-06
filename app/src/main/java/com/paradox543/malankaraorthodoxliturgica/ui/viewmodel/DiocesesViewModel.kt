@@ -23,9 +23,7 @@ class DiocesesViewModel @Inject constructor(
 
 
     init {
-        viewModelScope.launch {
-            getDioceses()
-        }
+        getDioceses()
     }
 
 

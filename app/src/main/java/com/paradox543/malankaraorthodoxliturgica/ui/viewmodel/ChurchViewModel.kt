@@ -23,9 +23,7 @@ class ChurchViewModel @Inject constructor(
 
 
     init {
-        viewModelScope.launch {
-            getChurchInfo()
-        }
+        getChurchInfo()
     }
 
     private fun getChurchInfo() {

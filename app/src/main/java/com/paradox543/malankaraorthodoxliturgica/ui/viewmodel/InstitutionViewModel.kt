@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.paradox543.malankaraorthodoxliturgica.domain.institution.model.InstitutionListModel
 import com.paradox543.malankaraorthodoxliturgica.domain.institution.repository.InstitutionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -23,9 +24,7 @@ class InstitutionViewModel @Inject constructor(
     val institutionData: StateFlow<List<InstitutionListModel.Data>> = _institutionData
 
     init {
-        viewModelScope.launch {
-            getInstitutionInfo()
-        }
+        getInstitutionInfo()
     }
 
     private fun getInstitutionInfo() {

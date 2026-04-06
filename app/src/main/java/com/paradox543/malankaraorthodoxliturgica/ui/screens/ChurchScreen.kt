@@ -46,14 +46,14 @@ fun ChurchScreen(
         topBar = { TopNavBar("Church Info", navController) }) { innerPadding ->
         Box(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(innerPadding)
         ) { }
         if (isLoading) {
             Box(
-                modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center
+                modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
             ) {
-                CircularProgressIndicator()
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
         } else {
             Column {
@@ -77,8 +77,8 @@ fun ChurchCard(data: ChurchListModel.Data) {
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp),
         shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(0.dp),
-        colors = CardDefaults.cardColors(contentColor = Color.White)
+        elevation = CardDefaults.cardElevation(1.dp),
+        colors = CardDefaults.cardColors(contentColor = Color.Black, containerColor = Color.White)
     ) {
         Column {
             AsyncImage(

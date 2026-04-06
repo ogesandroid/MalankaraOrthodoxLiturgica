@@ -16,7 +16,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -45,22 +44,24 @@ fun DioceseListScreen(
     val isLoading by diocesesViewModel.isLoading.collectAsState()
 
     Scaffold(
-        topBar = { TopNavBar("Dioceses", navController) }) { innerPadding ->
+        topBar = { TopNavBar("Dioceses Info", navController) }) { innerPadding ->
         Box(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(innerPadding)
         ) { }
         if (isLoading) {
             Box(
-                modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center
+                modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
             ) {
-                CircularProgressIndicator()
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
         } else {
             Column {
-                LazyColumn(modifier = Modifier.fillMaxSize(),
-                    contentPadding = innerPadding) {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = innerPadding
+                ) {
                     items(diocesesData) { data ->
                         PlaceCard(data)
                     }
@@ -77,8 +78,8 @@ fun PlaceCard(diocesesListModel: DiocesesListModel.Data) {
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp),
         shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(0.dp),
-        colors = CardDefaults.cardColors(contentColor = Color.White)
+        elevation = CardDefaults.cardElevation(1.dp),
+        colors = CardDefaults.cardColors(contentColor = Color.Black, containerColor = Color.White)
     ) {
         Column {
             AsyncImage(
