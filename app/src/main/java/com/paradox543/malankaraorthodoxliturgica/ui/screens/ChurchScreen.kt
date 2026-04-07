@@ -43,7 +43,7 @@ fun ChurchScreen(
     val churchData by churchViewModel.churchData.collectAsState()
     val isLoading by churchViewModel.isLoading.collectAsState()
     Scaffold(
-        topBar = { TopNavBar("Church Info", navController) }) { innerPadding ->
+        topBar = { TopNavBar("", navController) }) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -106,7 +106,7 @@ fun ChurchCard(data: ChurchListModel.Data) {
                 Text(
                     text = buildAnnotatedString {
                         append(
-                            data.description.take(100) + "... "
+                            data.description.take(136) + "... "
                         )
                         withStyle(
                             style = SpanStyle(

@@ -44,7 +44,7 @@ fun DioceseListScreen(
     val isLoading by diocesesViewModel.isLoading.collectAsState()
 
     Scaffold(
-        topBar = { TopNavBar("Dioceses Info", navController) }) { innerPadding ->
+        topBar = { TopNavBar("", navController) }) { innerPadding ->
         if (isLoading) {
             Box(
                 modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
@@ -102,7 +102,7 @@ fun PlaceCard(diocesesListModel: DiocesesListModel.Data) {
                 Text(
                     text = buildAnnotatedString {
                         append(
-                            diocesesListModel.description.take(100) + "... "
+                            diocesesListModel.description.take(136) + "... "
                         )
                         withStyle(
                             style = SpanStyle(

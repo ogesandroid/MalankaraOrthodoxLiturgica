@@ -6,6 +6,7 @@ import com.paradox543.malankaraorthodoxliturgica.domain.dioceses.model.DiocesesL
 import com.paradox543.malankaraorthodoxliturgica.domain.heirarchy.model.HierarchyListModel
 import com.paradox543.malankaraorthodoxliturgica.domain.home.model.HomeMenusModel
 import com.paradox543.malankaraorthodoxliturgica.domain.institution.model.InstitutionListModel
+import com.paradox543.malankaraorthodoxliturgica.domain.locations.model.LocationsModel
 import com.paradox543.malankaraorthodoxliturgica.domain.settings.model.AppLanguage
 import com.paradox543.malankaraorthodoxliturgica.domain.video.model.VideoListingModel
 import io.ktor.client.call.body
@@ -49,5 +50,12 @@ object AppService {
 
     suspend fun getVideoListData(): VideoListingModel =
         client.post("video-list") {
+        }.body()
+
+    suspend fun getLocationsList(searchKey: String): LocationsModel =
+        client.post("location-list") {
+            setBody(buildJsonObject {
+                put("searchKey", searchKey)
+            })
         }.body()
 }

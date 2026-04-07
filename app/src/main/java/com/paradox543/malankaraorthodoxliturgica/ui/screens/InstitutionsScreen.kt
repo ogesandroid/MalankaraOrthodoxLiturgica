@@ -1,6 +1,5 @@
 package com.paradox543.malankaraorthodoxliturgica.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,7 +43,7 @@ fun InstitutionsScreen(
     val isLoading by institutionViewModel.isLoading.collectAsState()
     val institutionData by institutionViewModel.institutionData.collectAsState()
     Scaffold(
-        topBar = { TopNavBar("Institution Info", navController) }) { innerPadding ->
+        topBar = { TopNavBar("", navController) }) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -107,7 +106,7 @@ fun InstitutionCard(data: InstitutionListModel.Data) {
                 Text(
                     text = buildAnnotatedString {
                         append(
-                            data.description.take(100) + "... "
+                            data.description.take(136) + "... "
                         )
                         withStyle(
                             style = SpanStyle(

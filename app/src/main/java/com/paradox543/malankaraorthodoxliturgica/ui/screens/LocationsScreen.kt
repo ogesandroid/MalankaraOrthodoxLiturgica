@@ -1,5 +1,6 @@
 package com.paradox543.malankaraorthodoxliturgica.ui.screens
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.BorderStroke
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -30,6 +32,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,6 +41,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -46,21 +51,31 @@ import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import androidx.navigation.NavController
 import com.paradox543.malankaraorthodoxliturgica.R
+import com.paradox543.malankaraorthodoxliturgica.domain.locations.model.LocationsModel
 import com.paradox543.malankaraorthodoxliturgica.ui.components.BottomNavBar
 import com.paradox543.malankaraorthodoxliturgica.ui.components.TopNavBar
 import com.paradox543.malankaraorthodoxliturgica.ui.theme.CardBorderColor
 import com.paradox543.malankaraorthodoxliturgica.ui.theme.HintColor
+import com.paradox543.malankaraorthodoxliturgica.ui.viewmodel.LocationsViewModel
 
+@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun LocationsScreen(
     navController: NavController,
-    title: String
+    locationsViewModel: LocationsViewModel
 ) {
-    val isLoading = false
+    val isLoading by locationsViewModel.isLoading.collectAsState()
+    val locationError by locationsViewModel.error.collectAsState()
+    val locationData by locationsViewModel.locationData.collectAsState()
+    val screenHeight = LocalConfiguration.current.screenHeightDp.dp
     val context = LocalContext.current
     var searchText by remember { mutableStateOf("") }
+
+    LaunchedEffect(Unit) {
+        locationsViewModel.getLocations(searchText)
+    }
     Scaffold(
-        topBar = { TopNavBar(title, navController) },
+        topBar = { TopNavBar("", navController) },
         bottomBar = { BottomNavBar(navController = navController) }
     ) { innerPadding ->
         Box(
@@ -83,16 +98,31 @@ fun LocationsScreen(
                     item {
                         SearchAddressCard(
                             query = searchText,
-                            onQueryChange = { searchText = it },
-                            onSearch = { }
+                            onQueryChange = { it ->
+                                searchText = it
+                            },
+                            onSearch = { locationsViewModel.getLocations(searchText) }
                         )
                     }
 
-                    // Location list items
-                    item {
-                        LocationListItem(navController, context)
-                        LocationListItem(navController, context)
-                        LocationListItem(navController, context)
+                    if (!locationError.isNullOrEmpty()) {
+                        item {
+                            Box(
+                                modifier = Modifier.fillMaxWidth().height(screenHeight * 0.7f),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Text(
+                                    text = locationError ?: "No data found",
+                                    color = Color(0xFFD1422B),
+                                    style = MaterialTheme.typography.bodyMedium
+                                )
+                            }
+                        }
+                    } else {
+                        // Location list items
+                        items(locationData) { item ->
+                            LocationListItem(navController, context, item)
+                        }
                     }
                 }
             }
@@ -101,10 +131,14 @@ fun LocationsScreen(
 }
 
 @Composable
-fun LocationListItem(navController: NavController, context: Context) {
-    var latitude = 24.360058
-    var longitude = 54.511520
-    var phoneNumber = "+915012345678"
+fun LocationListItem(
+    navController: NavController,
+    context: Context,
+    locationData: LocationsModel.Data
+) {
+    var latitude = locationData.latitude
+    var longitude = locationData.longitude
+    var phoneNumber = locationData.phoneNumber
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -124,13 +158,13 @@ fun LocationListItem(navController: NavController, context: Context) {
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = "St. George Orthodox Church, Mussafah",
+                    text = locationData.name,
                     color = Color(0xFFD1422B),
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
-                    text = "Abu Dhabi, United Arab Emirates",
+                    text = locationData.address,
                     color = Color(0xFF696969),
                     style = MaterialTheme.typography.bodyMedium
                 )

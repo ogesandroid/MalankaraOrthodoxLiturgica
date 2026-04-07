@@ -1,7 +1,7 @@
 package com.paradox543.malankaraorthodoxliturgica.data.calendar.di
 
 import com.paradox543.malankaraorthodoxliturgica.data.calendar.repository.LocationRepositoryIml
-import com.paradox543.malankaraorthodoxliturgica.domain.locations.LocationsRepository
+import com.paradox543.malankaraorthodoxliturgica.domain.locations.repository.LocationsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

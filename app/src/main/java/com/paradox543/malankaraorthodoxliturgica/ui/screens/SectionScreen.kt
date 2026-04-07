@@ -85,7 +85,6 @@ fun SectionScreen(
     for (item in node.route.split("_")) {
         title += (translations[item] ?: item) + " "
     }
-    Log.e("hjdgsfds", menus.toString())
 
     val activity = LocalContext.current as? Activity
 
