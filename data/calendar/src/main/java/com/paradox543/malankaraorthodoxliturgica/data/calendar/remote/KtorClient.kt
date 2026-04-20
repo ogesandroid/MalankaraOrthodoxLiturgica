@@ -25,7 +25,7 @@ object KtorClient {
         }
         install(Logging) {
             logger = Logger.ANDROID // prints to Android Logcat
-            level = LogLevel.NONE // logs everything hided
+            level = LogLevel.ALL // Changed from NONE to ALL to see logs
         }
         install(HttpTimeout) {
             requestTimeoutMillis = 60_000
