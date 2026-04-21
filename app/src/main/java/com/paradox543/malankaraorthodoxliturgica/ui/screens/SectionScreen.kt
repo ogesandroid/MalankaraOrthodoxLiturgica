@@ -369,6 +369,7 @@ private fun SectionCard(
                         ".mp3"
                     ))
                 ) {
+
                     navController.navigate(AppScreen.Song.createRoute(node.route))
                 } else {
                     Log.w("SectionCard", "Invalid operation: Node has no children and no filename.")
