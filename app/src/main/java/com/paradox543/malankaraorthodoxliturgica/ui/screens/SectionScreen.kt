@@ -511,6 +511,7 @@ fun MenuListCard(navController: NavController, menuName: String, icon: String) {
             style = MaterialTheme.typography.bodySmall,
             textAlign = TextAlign.Center,
             maxLines = 2,
+            minLines = 2,
             modifier = Modifier.padding(top = 6.dp)
         )
     }
